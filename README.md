@@ -8,6 +8,7 @@
 
 ## 打开方式
 
+- **在线版（推荐）**：https://nyatskr.github.io/linux-practice-site/ —— 手机、平板直接打开即可练，进度存在各自浏览器的本地存储里。
 - **直接双击 `index.html`** 即可使用（题库已内嵌为 `assets/js/bank.js`，不依赖网络请求）。
 - 推荐用本地服务器打开，`localStorage` 的行为更稳定：
 
@@ -103,6 +104,9 @@ PY
 纯静态站点，`dist` 也不需要构建，直接把整个目录上传到任意静态托管即可
 （GitHub Pages、Netlify、Vercel、对象存储、Nginx 均可）。子目录部署时无需改路径，
 所有引用均为相对路径。
+
+本仓库已开启 GitHub Pages：`main` 分支根目录 → https://nyatskr.github.io/linux-practice-site/
+推送后约 1 分钟自动重建，无需额外配置。
 
 ## 数据与隐私
 
