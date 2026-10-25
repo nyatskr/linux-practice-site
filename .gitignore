@@ -1,0 +1,17 @@
+# 系统与编辑器杂物
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# 本地临时文件
+*.log
+*.tmp
+
+# 第三方教程存档（非本项目内容，版权归原作者，不随仓库发布）
+Linux基本操作教程（idev365原版内容）.html
