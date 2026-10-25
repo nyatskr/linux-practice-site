@@ -8,6 +8,7 @@
 
   const MODE_LABEL = {
     topic: '专题练习',
+    lesson: '小节练习',
     cluster: '分组练习',
     kp: '知识点练习',
     exam: '综合练习',
@@ -106,6 +107,202 @@
     return esc(s || '').replace(/`([^`]+)`/g, '<code>$1</code>');
   }
 
+  /* ---------------- 配套视频 / 学习小节 ---------------- */
+
+  /* 「不正确 / 不属于 / 除外」类题目单独提示，不改写原题文字 */
+  const NEG_PATTERNS = [
+    /(不正确|不属于|不包括|除外|不符合|有误)/,
+    /(说法|表述|描述|选项|哪项|下列|以下)[^。？！]{0,12}错误/,
+    /不能(作为|使用|用于|实现|完成|直接|通过)/,
+  ];
+
+  function isNegativeStem(text) {
+    const t = String(text || '');
+    return NEG_PATTERNS.some((re) => re.test(t));
+  }
+
+  const ISSUE_LABEL = {
+    missing_question: '漏题',
+    duplicate_qid: '重复题号',
+    unknown_qid: '无效题号',
+    inactive_qid: '停用题号',
+    wrong_topic: '题号跨专题',
+    unknown_video: '无效资料引用',
+    lesson_without_video: '小节无配套资料',
+    empty_lesson: '空小节',
+    unknown_topic: '小节专题不存在',
+    duplicate_lesson: '小节编号重复',
+    bad_video_url: '资料链接格式',
+    bad_video_duration: '资料时长格式',
+    unknown_video_duration: '视频缺时长',
+    lesson_without_id: '小节缺编号',
+  };
+
+  function issueText(issue) {
+    const label = ISSUE_LABEL[issue.kind] || issue.kind;
+    const target = issue.qid || issue.video || issue.lesson || issue.topic || '';
+    return label + (target ? '（' + target + '）' : '');
+  }
+
+  function videoBadge(v) {
+    const label = LP.VIDEO_STATUS_LABEL[v.status] || '状态未标注';
+    return '<span class="vbadge ' + esc(v.status || 'unknown') + '">' + esc(label) + '</span>';
+  }
+
+  function videoCard(item) {
+    const role = LP.roleLabel ? LP.roleLabel(item) : (LP.VIDEO_ROLE_LABEL[item.role] || '');
+    const kind = LP.kindOf(item);
+    const isArticle = kind === 'article';
+    const meta = [
+      esc(LP.platformOf(item)),
+      item.author ? esc(item.author) : '',
+      isArticle ? '图文' : esc(item.duration || '时长未知'),
+      item.version_note ? esc(item.version_note) : '',
+    ]
+      .filter(Boolean)
+      .join(' · ');
+
+    return (
+      '<div class="vcard">' +
+        '<div class="vcard-main">' +
+          '<div class="vcard-top">' +
+            (role ? '<span class="vrole ' + esc(item.role) + '">' + esc(role) + '</span>' : '') +
+            '<span class="vkind ' + esc(kind) + '">' + esc(LP.KIND_LABEL[kind] || '资料') + '</span>' +
+            '<span class="vtitle">' + esc(item.title) + '</span>' +
+            videoBadge(item) +
+          '</div>' +
+          '<div class="vmeta">' + meta + '</div>' +
+          (item.note ? '<div class="vnote">' + esc(item.note) + '</div>' : '') +
+        '</div>' +
+        '<a class="btn ghost sm vopen" href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer">' +
+          (isArticle ? '阅读原文 ↗' : '打开视频 ↗') +
+        '</a>' +
+      '</div>'
+    );
+  }
+
+  function questionVideoLink(item) {
+    const kind = LP.kindOf(item);
+    const tail = kind === 'article' ? '图文' : item.duration || '视频';
+    return (
+      '<a class="qv-item" href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer">' +
+        '<span class="qv-dur">' + esc(tail) + '</span>' +
+        '<span class="qv-title">' + esc(item.title) + '</span>' +
+        '<span class="qv-plat">' + esc(LP.platformOf(item)) + '</span>' +
+        (item.status && item.status !== 'verified' && item.status !== 'main'
+          ? '<span class="qv-flag">' + esc(LP.VIDEO_STATUS_LABEL[item.status] || '') + '</span>'
+          : '') +
+      '</a>'
+    );
+  }
+
+  function lessonCard(l) {
+    const s = LP.statsFor(l.qids);
+    const videos = l.videos || [];
+    const primary = videos.filter((v) => v.role !== 'backup');
+    const backup = videos.filter((v) => v.role === 'backup');
+    const nVideo = videos.filter((v) => LP.kindOf(v) === 'video').length;
+    const nArticle = videos.length - nVideo;
+    const seconds = LP.lessonVideoMinutes(l);
+    const over = seconds > 20 * 60;
+
+    const cov = l.coverage.length
+      ? '<ul class="cov">' + l.coverage.map((c) => '<li>' + esc(c) + '</li>').join('') + '</ul>'
+      : '<p class="muted small">未标注覆盖点</p>';
+
+    const qchips = l.qids
+      .map((id) => {
+        const q = LP.state.qById[id];
+        return (
+          '<button class="qchip" data-act="peek" data-qid="' + esc(id) + '" title="' + esc(q.stem) + '">' +
+            '<i class="dot ' + LP.statusOf(id) + '"></i>' + esc(id) +
+          '</button>'
+        );
+      })
+      .join('');
+
+    const videoHtml =
+      (primary.length
+        ? primary.map(videoCard).join('')
+        : '<div class="vempty">这个小节还没有可用资料，先看题解文字。</div>') +
+      (backup.length
+        ? '<div class="vgroup-label">按需补充</div>' + backup.map(videoCard).join('')
+        : '');
+
+    const mustKnow = (l.must_know || []).length
+      ? '<div class="mustknow">' +
+          '<div class="mk-head">' + (nVideo ? '视频没讲到，但必须记住' : '资料没讲到，但必须记住') + '</div>' +
+          '<ul class="mk-list">' + l.must_know.map((t) => '<li>' + richText(t) + '</li>').join('') + '</ul>' +
+        '</div>'
+      : '';
+
+    return (
+      '<div class="lesson" id="lesson-' + esc(l.id) + '">' +
+        '<div class="lesson-head">' +
+          '<span class="lesson-no">' + esc(l.id) + '</span>' +
+          '<h3>' + esc(l.title) + '</h3>' +
+          '<span class="lesson-meta">' + l.qids.length + ' 题 · 已做 ' + s.done +
+            (s.done ? ' · 正确率 ' + LP.pct(s.rate) : '') + '</span>' +
+        '</div>' +
+        '<div class="lesson-body">' +
+          '<div class="lesson-cols">' +
+            '<div>' +
+              '<div class="lesson-label">本小节要讲清</div>' + cov +
+            '</div>' +
+            '<div>' +
+              '<div class="lesson-label">对应题号（点开看解析）</div>' +
+              '<div class="qchips">' + qchips + '</div>' +
+            '</div>' +
+          '</div>' +
+          mustKnow +
+          '<div class="lesson-videos">' +
+            '<div class="lesson-label">配套资料 ' + videos.length + ' 条（视频 ' + nVideo +
+              (nArticle ? ' · 图文 ' + nArticle : '') + '）' +
+              (seconds ? ' · 视频合计 ' + LP.fmtVideoTime(seconds) : '') +
+              (over ? ' · 超过 20 分钟，建议只看主视频' : '') +
+            '</div>' +
+            videoHtml +
+          '</div>' +
+          '<div class="lesson-foot">' +
+            '<div class="lf-progress">' + bar(s.coverage, 'tiny') +
+              '<span class="muted small">已做 ' + s.done + '/' + l.qids.length + '</span>' +
+            '</div>' +
+            '<button class="btn primary sm" data-act="start-lesson" data-lesson="' + esc(l.id) + '">' +
+              '练这一小节（' + l.qids.length + ' 题）</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    );
+  }
+
+  /* 做题页顶部的紧凑入口：默认收起，点开才显示视频链接 */
+  function questionVideos(lesson) {
+    if (!lesson || !lesson.videos.length) return '';
+    const open = LP.state.session && LP.state.session.videosOpen ? ' open' : '';
+    return (
+      '<details class="qvideos"' + open + '>' +
+        '<summary>本组配套资料 ' + lesson.videos.length + ' 个 · ' + esc(lesson.title) + '</summary>' +
+        '<div class="qv-list">' + lesson.videos.map(questionVideoLink).join('') + '</div>' +
+      '</details>'
+    );
+  }
+
+  /* 答错后的「建议回看」 */
+  function reviewHint(q) {
+    const lesson = LP.lessonOf(q.id);
+    if (!lesson) return '';
+    const vids = (lesson.videos || []).filter((v) => v.role !== 'backup').slice(0, 2);
+    return (
+      '<div class="review-hint">' +
+        '<div class="rh-head">建议回看 · ' + esc(lesson.title) + '</div>' +
+        (vids.length
+          ? '<div class="qv-list">' + vids.map(questionVideoLink).join('') + '</div>'
+          : '<p class="rh-gap">这个小节还没有可用资料，先看下面的逐项解析。</p>') +
+        (lesson.gaps ? '<p class="rh-gap">资料缺口：' + esc(lesson.gaps) + '</p>' : '') +
+      '</div>'
+    );
+  }
+
   /* 逐项解析：A—D 分项结论 + 补充知识 */
   function analysisBlock(q) {
     const items = q.analysis || [];
@@ -152,6 +349,7 @@
         '</div>' +
         '<div class="explain-body">' +
           analysisBlock(q) +
+          (!correct ? reviewHint(q) : '') +
           '<div class="facts">' +
             '<div><span>适用版本</span><b>' + esc(q.version || '未标注') + '</b></div>' +
             '<div><span>难度</span><b>' + esc(q.difficulty || '未标注') + '</b></div>' +
@@ -252,6 +450,7 @@
     const st = LP.topicStats(t);
     const weakIds = t.qids.filter((id) => LP.statusOf(id) === 'weak');
     const newIds = t.qids.filter((id) => LP.statusOf(id) === 'new');
+    const lessons = t.lessons || [];
 
     const clusters = t.clusters
       .map((c) => {
@@ -293,6 +492,26 @@
       })
       .join('');
 
+    const lessonHtml = lessons.length
+      ? '<div class="section-head"><h2>学习小节</h2>' +
+          '<span class="muted">先看视频，再练这一组；小节只影响顺序，题号与进度不变</span></div>' +
+        '<div class="lessons">' + lessons.map(lessonCard).join('') + '</div>'
+      : '';
+
+    const groupHtml = lessons.length
+      ? '<details class="orig-groups">' +
+          '<summary>按知识点分组（原结构，便于对照原题资料）</summary>' +
+          '<div class="clusters">' + clusters + '</div>' +
+        '</details>'
+      : '<div class="clusters">' + clusters + '</div>';
+
+    const startHtml = lessons.length
+      ? '<button class="btn primary" data-act="start-topic-order" data-topic="' + esc(t.id) + '" data-order="study">' +
+          '按学习顺序练习（' + t.qids.length + ' 题）</button>' +
+        '<button class="btn ghost" data-act="start-topic-order" data-topic="' + esc(t.id) + '" data-order="original">' +
+          '按原题顺序练习</button>'
+      : '<button class="btn primary" data-act="start-topic" data-topic="' + esc(t.id) + '">开始本专题（' + t.qids.length + ' 题）</button>';
+
     return (
       '<div class="crumb"><a href="#/">专题目录</a><span>/</span><b>' + esc(t.num) + ' ' + esc(t.title) + '</b></div>' +
       '<div class="topic-hero">' +
@@ -300,7 +519,8 @@
           '<span class="th-num">' + esc(t.num) + '</span>' +
           '<div>' +
             '<h1>' + esc(t.title) + '</h1>' +
-            '<p>' + t.qids.length + ' 题 · 单选 ' + t.singleCount + ' · 多选 ' + t.multipleCount + ' · ' + t.clusters.length + ' 个知识点分组</p>' +
+            '<p>' + t.qids.length + ' 题 · 单选 ' + t.singleCount + ' · 多选 ' + t.multipleCount + ' · ' +
+              (lessons.length ? lessons.length + ' 个学习小节' : t.clusters.length + ' 个知识点分组') + '</p>' +
           '</div>' +
         '</div>' +
         '<div class="th-stats">' +
@@ -311,12 +531,13 @@
         '</div>' +
       '</div>' +
       '<div class="action-row">' +
-        '<button class="btn primary" data-act="start-topic" data-topic="' + esc(t.id) + '">开始本专题（' + t.qids.length + ' 题）</button>' +
+        startHtml +
         (newIds.length ? '<button class="btn ghost" data-act="start-topic" data-topic="' + esc(t.id) + '" data-only="new">只练未做（' + newIds.length + '）</button>' : '') +
         (weakIds.length ? '<button class="btn ghost" data-act="start-topic" data-topic="' + esc(t.id) + '" data-only="weak">只练错题（' + weakIds.length + '）</button>' : '') +
         '<a class="btn ghost" href="#/browse/' + esc(t.id) + '">浏览题目</a>' +
       '</div>' +
-      '<div class="clusters">' + clusters + '</div>'
+      lessonHtml +
+      groupHtml
     );
   };
 
@@ -353,6 +574,7 @@
     const rev = rec && rec.needsReview;
     const correct = submitted ? LP.isCorrect(q, selected) : null;
     const topic = LP.state.topicById[q.topic_id];
+    const lesson = LP.lessonOf(qid);
 
     const footer =
       '<div class="qfoot">' +
@@ -376,15 +598,20 @@
         '<div class="qhead">' +
           '<span class="qid">' + esc(q.id) + '</span>' +
           typeTag(q) +
-          '<span class="tag ghost">' + esc(topic ? topic.num + ' ' + topic.title : '') + '</span>' +
-          '<span class="tag ghost">' + esc(q.knowledge_point) + '</span>' +
           statusTag(q.id) +
         '</div>' +
-        '<h2 class="stem">' + esc(q.stem) + '</h2>' +
+        (isNegativeStem(q.stem) ? '<p class="qnote">注意：本题选错误项</p>' : '') +
+        '<h2 class="stem" id="stem" tabindex="-1">' + esc(q.stem) + '</h2>' +
+        '<div class="qmeta">' +
+          '<span class="tag ghost">' + esc(topic ? topic.num + ' ' + topic.title : '') + '</span>' +
+          '<span class="tag ghost">' + esc(q.knowledge_point) + '</span>' +
+          (lesson ? '<span class="tag ghost">' + esc(lesson.id + ' ' + lesson.title) + '</span>' : '') +
+        '</div>' +
         (q.type === 'multiple'
           ? '<p class="hint">多选：完整选中全部正确项才计分' +
             (selected.length && !submitted ? ' · 已选 ' + selected.length + ' 项' : '') + '</p>'
           : '') +
+        questionVideos(lesson) +
         optionList(q, selected, submitted, submitted) +
         (submitted ? explainBlock(q, selected, correct) + footer : footer) +
         '<p class="kbd-hint">快捷键：A–D 选择 · Enter 提交/下一题 · ← → 翻页</p>' +
@@ -660,6 +887,31 @@
     const storageOK = LP.storageTest();
     const staleCount = LP.recordList().filter((r) => r.bankVersion && r.bankVersion !== b.bank_version).length;
 
+    const issues = LP.learningIssues();
+    const lessonsTotal = LP.state.topics.reduce((acc, t) => acc + (t.lessons ? t.lessons.length : 0), 0);
+    const topicsWithLessons = LP.state.topics.filter((t) => t.lessons && t.lessons.length).length;
+    const videoList = Object.keys(LP.state.videoById || {}).map((id) => LP.state.videoById[id]);
+    const nVid = videoList.filter((v) => LP.kindOf(v) === 'video').length;
+    const nArt = videoList.length - nVid;
+    const verifiedVideos = videoList.filter((v) => v.status === 'verified' || v.status === 'main').length;
+
+    const learningBlock = LP.learningEnabled()
+      ? '<div class="section-head"><h2>学习小节与配套资料</h2><span class="muted">小节只调整练习顺序，不改题号与进度</span></div>' +
+        '<div class="card">' +
+          '<div class="facts wide">' +
+            '<div><span>学习小节</span><b>' + lessonsTotal + ' 个</b></div>' +
+            '<div><span>已建小节专题</span><b>' + topicsWithLessons + ' / ' + LP.state.topics.length + '</b></div>' +
+            '<div><span>配套资料</span><b>' + videoList.length + ' 条</b><span class="muted">视频 ' + nVid + ' · 图文 ' + nArt + '</span></div>' +
+            '<div><span>已人工验收</span><b>' + verifiedVideos + ' / ' + videoList.length + '</b></div>' +
+          '</div>' +
+          (issues.length
+            ? '<p class="warnline">学习小节数据有 ' + issues.length + ' 处待处理：' +
+              esc(issues.slice(0, 4).map(issueText).join('；')) + (issues.length > 4 ? ' 等' : '') + '</p>'
+            : '<p class="okline">小节覆盖检查通过：没有漏题、重复题号或无效资料引用。</p>') +
+          '<p class="muted small">资料验收状态见 docs/video-map.md；只有「已验收」的资料才可以当作主资料使用。</p>' +
+        '</div>'
+      : '';
+
     return (
       '<div class="page-head"><h1>进度与数据</h1><p class="muted">进度保存在当前浏览器本地。换设备或换域名不会自动同步，请用导出/导入迁移。</p></div>' +
       '<div class="stat-row">' +
@@ -692,6 +944,7 @@
           '<button class="btn danger" data-act="clear-all">清空全部记录</button>' +
         '</div>' +
       '</div>' +
+      learningBlock +
       '<div class="section-head"><h2>题库信息</h2></div>' +
       '<div class="card">' +
         '<div class="facts wide">' +
@@ -720,6 +973,7 @@
         '<div class="qhead"><span class="qid">' + esc(q.id) + '</span>' + typeTag(q) +
           '<span class="tag ghost">' + esc(q.cluster) + '</span>' +
           '<button class="icon-btn right" data-act="close-peek">✕</button></div>' +
+        (isNegativeStem(q.stem) ? '<p class="qnote">注意：本题选错误项</p>' : '') +
         '<h2 class="stem">' + esc(q.stem) + '</h2>' +
         optionList(q, sel, true, true) +
         explainBlock(q, sel, rec ? !!rec.correct : true) +

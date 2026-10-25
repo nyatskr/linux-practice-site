@@ -188,6 +188,21 @@
     return s ? s.qids[s.index] : null;
   }
 
+  /* 翻题后统一把视线拉回题干：上一题、下一题、答题卡跳转都走这里 */
+  function focusStem() {
+    const el = document.getElementById('stem');
+    if (!el) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const offset = window.innerWidth <= 860 ? 64 : 24;
+    const y = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+    try {
+      el.focus({ preventScroll: true });
+    } catch (e) { /* 旧浏览器不支持 focus 参数，忽略 */ }
+  }
+
   function refreshCard() {
     const s = LP.state.session;
     const card = $('#qcard');
@@ -256,7 +271,7 @@
     s.index += 1;
     LP.saveSession();
     render();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    focusStem();
   }
 
   function prevQuestion() {
@@ -265,6 +280,7 @@
     s.index -= 1;
     LP.saveSession();
     render();
+    focusStem();
   }
 
   function finishPractice() {
@@ -345,6 +361,28 @@
       title: t.num + ' ' + (kp || cluster),
       qids,
     });
+  }
+
+  /* 按学习小节顺序练习（小节只决定顺序，题号与进度不变） */
+  function startTopicOrder(topicId, order) {
+    const t = LP.state.topicById[topicId];
+    if (!t) return;
+    const qids = order === 'original' ? t.qids.slice() : LP.studyQids(t.id);
+    startSession({
+      mode: 'topic',
+      title: t.num + ' ' + t.title + (order === 'original' ? ' · 原题顺序' : ' · 学习顺序'),
+      qids,
+    });
+  }
+
+  function startLesson(lessonId) {
+    const lesson = LP.state.lessonById[lessonId];
+    if (!lesson) return;
+    if (!lesson.qids.length) {
+      LP.toast('这个小节还没有题目', 'warn');
+      return;
+    }
+    startSession({ mode: 'lesson', title: lesson.id + ' ' + lesson.title, qids: lesson.qids });
   }
 
   function startSet(kind) {
@@ -680,6 +718,8 @@
       LP.toast(on ? '已加入待复习' : '已移出待复习');
     },
     'start-topic': (el) => startTopic(el.getAttribute('data-topic'), el.getAttribute('data-only')),
+    'start-topic-order': (el) => startTopicOrder(el.getAttribute('data-topic'), el.getAttribute('data-order')),
+    'start-lesson': (el) => startLesson(el.getAttribute('data-lesson')),
     'start-cluster': (el) => startFiltered(el.getAttribute('data-topic'), el.getAttribute('data-cluster'), null),
     'start-kp': (el) =>
       startFiltered(el.getAttribute('data-topic'), el.getAttribute('data-cluster'), el.getAttribute('data-kp')),
@@ -745,6 +785,7 @@
       s.index = parseInt(el.getAttribute('data-index'), 10) || 0;
       LP.saveSession();
       render();
+      focusStem();
     },
   };
 
@@ -758,6 +799,20 @@
       actions[act](el, e);
     }
   });
+
+  /* 记住「本组配套视频」的展开状态，翻题后不会自动收起 */
+  document.addEventListener(
+    'toggle',
+    (e) => {
+      const box = e.target;
+      if (!box || !box.classList || !box.classList.contains('qvideos')) return;
+      const s = LP.state.session;
+      if (!s) return;
+      s.videosOpen = box.open;
+      LP.saveSession();
+    },
+    true
+  );
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {

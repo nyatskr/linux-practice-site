@@ -154,7 +154,201 @@
     state.topics = topics;
     state.topicById = {};
     topics.forEach((t) => (state.topicById[t.id] = t));
+
+    buildLearning();
   }
+
+  /* ---------------- 学习小节与配套视频 ----------------
+   * 数据来自 assets/js/resources.js（可选）。没有这个文件时，站点按原题库结构工作。
+   * 小节只负责「排序」和「配套视频」，不改题号、不改 bank.js，进度记录因此不受影响。
+   */
+
+  const VIDEO_STATUS_LABEL = {
+    candidate: '候选 · 待验收',
+    verified: '已验收',
+    main: '主视频',
+    backup: '备用',
+    dead: '失效待替换',
+  };
+  LP.VIDEO_STATUS_LABEL = VIDEO_STATUS_LABEL;
+
+  const VIDEO_ROLE_LABEL = { main: '主视频', supplement: '补充', backup: '按需' };
+  LP.VIDEO_ROLE_LABEL = VIDEO_ROLE_LABEL;
+
+  /* 配套资料：视频（B 站 / YouTube / 抖音 / 小红书）+ 图文（知乎 / 博客 / 文档） */
+  LP.KIND_LABEL = { video: '视频', article: '图文' };
+
+  const PLATFORM_LABEL = {
+    bilibili: 'B 站',
+    youtube: 'YouTube',
+    douyin: '抖音',
+    xiaohongshu: '小红书',
+    zhihu: '知乎',
+    tencent: '腾讯云',
+    csdn: 'CSDN',
+    cnblogs: '博客园',
+    web: '网页',
+  };
+  LP.PLATFORM_LABEL = PLATFORM_LABEL;
+  LP.platformOf = (item) => PLATFORM_LABEL[item && item.platform] || (item && item.platform) || '网页';
+  LP.kindOf = (item) => ((item && item.kind) || 'video');
+
+  /* 角色标签按资料类型换词：图文不叫「主视频」 */
+  LP.roleLabel = (item) => {
+    const role = item && item.role;
+    if (LP.kindOf(item) === 'article') {
+      return { main: '主图文', supplement: '补充图文', backup: '按需' }[role] || '';
+    }
+    return VIDEO_ROLE_LABEL[role] || '';
+  };
+
+  LP.durationSec = (text) => {
+    const parts = String(text || '').match(/\d+/g);
+    if (!parts) return 0;
+    return parts.reduce((acc, n) => acc * 60 + parseInt(n, 10), 0);
+  };
+
+  LP.fmtVideoTime = (sec) => {
+    const s = Math.max(0, Math.round(sec || 0));
+    return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  };
+
+  function buildLearning() {
+    const src = window.LINUX_LEARNING;
+
+    state.learning = null;
+    state.lessonById = {};
+    state.lessonsByTopic = {};
+    state.lessonOfQid = {};
+    state.videoById = {};
+    state.learningIssues = [];
+
+    state.topics.forEach((t) => {
+      t.lessons = [];
+      t.lessonCount = 0;
+      t.studyQids = t.qids.slice();
+    });
+
+    if (!src || !Array.isArray(src.lessons) || !src.lessons.length) return;
+
+    const issues = state.learningIssues;
+    const videos = {};
+
+    Object.keys(src.videos || {}).forEach((id) => {
+      const v = Object.assign({ kind: 'video' }, src.videos[id] || {});
+      videos[id] = Object.assign({ id }, v);
+      if (!/^https?:\/\//i.test(v.url || '')) {
+        issues.push({ kind: 'bad_video_url', video: id });
+      }
+      if (v.duration && !LP.durationSec(v.duration)) {
+        issues.push({ kind: 'bad_video_duration', video: id });
+      }
+      if (v.kind !== 'article' && !LP.durationSec(v.duration)) {
+        issues.push({ kind: 'unknown_video_duration', video: id });
+      }
+    });
+    state.videoById = videos;
+
+    const lessons = src.lessons
+      .slice()
+      .sort((a, b) => String(a.id).localeCompare(String(b.id)));
+
+    lessons.forEach((raw, i) => {
+      const lid = String(raw.id || '');
+      if (!lid) {
+        issues.push({ kind: 'lesson_without_id' });
+        return;
+      }
+      if (state.lessonById[lid]) {
+        issues.push({ kind: 'duplicate_lesson', lesson: lid });
+        return;
+      }
+
+      const topicId = String(raw.topic_id || '');
+      const topic = state.topicById[topicId];
+      if (!topic) issues.push({ kind: 'unknown_topic', lesson: lid, topic: topicId });
+
+      const qids = [];
+      (raw.question_ids || []).forEach((qid) => {
+        const q = state.qById[qid];
+        if (!q) {
+          issues.push({ kind: 'unknown_qid', lesson: lid, qid });
+          return;
+        }
+        if ((q.status || 'active') !== 'active') {
+          issues.push({ kind: 'inactive_qid', lesson: lid, qid });
+          return;
+        }
+        if (q.topic_id !== topicId) {
+          issues.push({ kind: 'wrong_topic', lesson: lid, qid, actual: q.topic_id });
+        }
+        if (state.lessonOfQid[qid]) {
+          issues.push({ kind: 'duplicate_qid', lesson: lid, qid, first: state.lessonOfQid[qid] });
+          return;
+        }
+        qids.push(qid);
+        state.lessonOfQid[qid] = lid;
+      });
+
+      if (!qids.length) issues.push({ kind: 'empty_lesson', lesson: lid });
+
+      const videoIds = (raw.video_ids || []).filter((vid) => {
+        if (!videos[vid]) {
+          issues.push({ kind: 'unknown_video', lesson: lid, video: vid });
+          return false;
+        }
+        return true;
+      });
+      if (!videoIds.length) issues.push({ kind: 'lesson_without_video', lesson: lid });
+
+      const lesson = {
+        id: lid,
+        topic_id: topicId,
+        title: raw.title || lid,
+        qids,
+        videos: videoIds.map((vid) => videos[vid]),
+        coverage: raw.coverage || [],
+        must_know: raw.must_know || [],
+        search_terms: raw.search_terms || [],
+        gaps: raw.gaps || '',
+        order: i,
+      };
+
+      state.lessonById[lid] = lesson;
+      if (!state.lessonsByTopic[topicId]) state.lessonsByTopic[topicId] = [];
+      state.lessonsByTopic[topicId].push(lesson);
+    });
+
+    // 每个专题检查漏题，并生成「按学习顺序」的题号序列
+    state.topics.forEach((t) => {
+      const list = state.lessonsByTopic[t.id] || [];
+      t.lessons = list;
+      t.lessonCount = list.length;
+      if (!list.length) return;
+
+      const covered = [];
+      list.forEach((l) => l.qids.forEach((qid) => covered.push(qid)));
+      const missing = t.qids.filter((qid) => covered.indexOf(qid) < 0);
+      missing.forEach((qid) => issues.push({ kind: 'missing_question', topic: t.id, qid }));
+      t.studyQids = covered.concat(missing);
+    });
+
+    state.learning = src;
+  }
+
+  LP.learningEnabled = () => !!state.learning;
+  LP.lessonOf = (qid) => (state.lessonOfQid[qid] ? state.lessonById[state.lessonOfQid[qid]] : null);
+  LP.lessonsForTopic = (topicId) => state.lessonsByTopic[topicId] || [];
+  LP.lessonStats = (lesson) => LP.statsFor(lesson.qids);
+  LP.studyQids = (topicId) => {
+    const t = state.topicById[topicId];
+    return t ? t.studyQids.slice() : [];
+  };
+  LP.learningIssues = () => state.learningIssues;
+  LP.lessonVideoMinutes = (lesson) =>
+    (lesson.videos || [])
+      .filter((v) => v.role !== 'backup')
+      .reduce((acc, v) => acc + LP.durationSec(v.duration), 0);
 
   /* ---------------- 进度记录 ---------------- */
 
