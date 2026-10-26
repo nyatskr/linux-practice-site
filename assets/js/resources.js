@@ -24,7 +24,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "概念讲解，不绑定 RHEL 版本",
-      "note": "分集 p9，标题与播放器已确认"
+      "note": "分集 p9，标题与播放器已确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-distro-tree": {
       "platform": "bilibili",
@@ -36,7 +37,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "家族树含 Debian 系与 Red Hat 系；CentOS 部分按补丁说明看",
-      "note": "单集视频，标题与播放器已确认"
+      "note": "单集视频，标题与播放器已确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-uname": {
       "platform": "bilibili",
@@ -48,7 +50,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "uname 各选项在 RHEL 9/10 一致",
-      "note": "分集 p71，只演示 uname 常用选项"
+      "note": "分集 p71，只演示 uname 常用选项",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-gnu-gpl": {
       "platform": "bilibili",
@@ -60,7 +63,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "GPL 概念，不涉及内核 syscall exception",
-      "note": "分集 p7，标题与播放器已确认"
+      "note": "分集 p7，标题与播放器已确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-modprobe": {
       "platform": "bilibili",
@@ -72,7 +76,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "模块命令通用，示例发行版不限",
-      "note": "只在「加载模块是不是等于重新编译内核」有疑问时看"
+      "note": "只在「加载模块是不是等于重新编译内核」有疑问时看",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-xwindow": {
       "platform": "bilibili",
@@ -84,7 +89,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "以 X Window 为主，Wayland 只作提及",
-      "note": "分集 p4，标题与播放器已确认"
+      "note": "分集 p4，标题与播放器已确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-fhs": {
       "platform": "bilibili",
@@ -96,7 +102,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "FHS 3.0，目录名在 RHEL 9/10 一致",
-      "note": "分集 p8，标题与播放器已确认"
+      "note": "分集 p8，标题与播放器已确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-help-tools": {
       "platform": "bilibili",
@@ -108,7 +115,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "Bash + GNU coreutils 通用",
-      "note": "单集视频，一条覆盖帮助体系与命令解析，接近小节时长上限"
+      "note": "单集视频，一条覆盖帮助体系与命令解析，接近小节时长上限",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-script-exec": {
       "platform": "bilibili",
@@ -120,7 +128,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "Ubuntu 环境，执行权限概念通用",
-      "note": "只在「为什么当前目录脚本要写 ./runme」不清楚时看"
+      "note": "只在「为什么当前目录脚本要写 ./runme」不清楚时看",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-path": {
       "platform": "bilibili",
@@ -132,7 +141,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "Ubuntu 环境，PATH 机制通用",
-      "note": "只在 PATH 查找顺序不清楚时看"
+      "note": "只在 PATH 查找顺序不清楚时看",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-env": {
       "platform": "bilibili",
@@ -144,7 +154,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "Bash 变量机制，与发行版无关",
-      "note": "分集 p30，未对比「赋值 vs 导出」的失败场景"
+      "note": "分集 p30，未对比「赋值 vs 导出」的失败场景",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-exit-status": {
       "platform": "bilibili",
@@ -156,7 +167,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "Bash 特殊变量，通用",
-      "note": "分集 p11，覆盖 $? 与 $$，$0 与脚本参数需文字补充"
+      "note": "分集 p11，覆盖 $? 与 $$，$0 与脚本参数需文字补充",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-preempt-rt": {
       "platform": "bilibili",
@@ -168,7 +180,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "Linux 6.12 起 PREEMPT_RT 合入主线",
-      "note": "新闻式介绍，分时/实时概念对比需配合题解"
+      "note": "新闻式介绍，分时/实时概念对比需配合题解",
+      "link_checked_at": "2026-10-26"
     },
     "v-01-power": {
       "platform": "bilibili",
@@ -180,7 +193,8 @@ window.LINUX_LEARNING = {
       "status": "verified",
       "verified_at": "2026-10-24",
       "version_note": "systemd 环境下的关机命令",
-      "note": "分集 p150，只对比命令，未讲 shutdown -c 与 systemctl 等价写法"
+      "note": "分集 p150，只对比命令，未讲 shutdown -c 与 systemctl 等价写法",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-create-del": {
       "platform": "bilibili",
@@ -192,7 +206,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用 GNU coreutils 行为",
-      "note": "机器检索候选，尚未人工观看验收"
+      "note": "机器检索候选，尚未人工观看验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-mkdir": {
       "platform": "bilibili",
@@ -204,7 +219,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "补充 mkdir -p 建多级目录"
+      "note": "补充 mkdir -p 建多级目录",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-rm": {
       "platform": "bilibili",
@@ -216,7 +232,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "补充 rm 与 rmdir 的差别"
+      "note": "补充 rm 与 rmdir 的差别",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-cp-mv": {
       "platform": "bilibili",
@@ -228,7 +245,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "机器检索候选，cp -a 是否演示需验收时确认"
+      "note": "机器检索候选，cp -a 是否演示需验收时确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-cp": {
       "platform": "bilibili",
@@ -240,7 +258,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "补充 cp 的常用参数"
+      "note": "补充 cp 的常用参数",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-df-du": {
       "platform": "bilibili",
@@ -252,7 +271,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "机器检索候选，尚未人工观看验收"
+      "note": "机器检索候选，尚未人工观看验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-lsblk": {
       "platform": "bilibili",
@@ -264,7 +284,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "补充块设备与分区关系，注意 lsblk 不给目录大小"
+      "note": "补充块设备与分区关系，注意 lsblk 不给目录大小",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-ls": {
       "platform": "bilibili",
@@ -276,7 +297,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "机器检索候选，尚未人工观看验收"
+      "note": "机器检索候选，尚未人工观看验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-filetype": {
       "platform": "bilibili",
@@ -288,7 +310,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用，覆盖七种文件类型",
-      "note": "补充 ls -l 权限串首字符的含义"
+      "note": "补充 ls -l 权限串首字符的含义",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-touch": {
       "platform": "bilibili",
@@ -300,7 +323,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "按需补充：只覆盖 touch 与 rm，atime/mtime/ctime 语义未讲，所以不计入小节时长"
+      "note": "按需补充：只覆盖 touch 与 rm，atime/mtime/ctime 语义未讲，所以不计入小节时长",
+      "link_checked_at": "2026-10-26"
     },
     "a-02-timestamps": {
       "kind": "article",
@@ -325,7 +349,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "简介明确写「访问时间和修改时间」，据此推测覆盖 atime/mtime 的查看与修改；ctime 与稀疏文件未讲，待验收"
+      "note": "简介明确写「访问时间和修改时间」，据此推测覆盖 atime/mtime 的查看与修改；ctime 与稀疏文件未讲，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "a-02-sparse": {
       "kind": "article",
@@ -338,7 +363,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "已核对正文：逻辑大小 vs 物理占用、稀疏文件造洞、lsof 查「已删除但被占用」"
+      "note": "已核对正文：逻辑大小 vs 物理占用、稀疏文件造洞、lsof 查「已删除但被占用」",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-glob": {
       "platform": "bilibili",
@@ -350,7 +376,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash glob，通用",
-      "note": "机器检索候选，尚未人工观看验收"
+      "note": "机器检索候选，尚未人工观看验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-glob2": {
       "platform": "bilibili",
@@ -362,7 +389,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "补充 ? [] {} 等通配符写法"
+      "note": "补充 ? [] {} 等通配符写法",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-link": {
       "platform": "bilibili",
@@ -374,7 +402,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用 ext4/xfs 行为一致",
-      "note": "机器检索候选；readlink 与相对软链接解析需验收时确认"
+      "note": "机器检索候选；readlink 与相对软链接解析需验收时确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-ln": {
       "platform": "bilibili",
@@ -386,7 +415,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "ln 与 ln -s 语法演示，按需看"
+      "note": "ln 与 ln -s 语法演示，按需看",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-ln5": {
       "platform": "bilibili",
@@ -398,7 +428,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "较短的 ln 演示，作为备用"
+      "note": "较短的 ln 演示，作为备用",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-tar": {
       "platform": "bilibili",
@@ -410,7 +441,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "GNU tar 1.30+，RHEL 9/10 一致",
-      "note": "机器检索候选；-t 与 -C 是否演示需验收时确认"
+      "note": "机器检索候选；-t 与 -C 是否演示需验收时确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-tar-basic": {
       "platform": "bilibili",
@@ -422,7 +454,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "补充 czf/xzf 的最短写法"
+      "note": "补充 czf/xzf 的最短写法",
+      "link_checked_at": "2026-10-26"
     },
     "v-02-tar-C": {
       "platform": "bilibili",
@@ -434,7 +467,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "GNU tar",
-      "note": "只在 -C 与 --strip-components 不清楚时看"
+      "note": "只在 -C 与 --strip-components 不清楚时看",
+      "link_checked_at": "2026-10-26"
     },
 
     "v-03-trinity": {
@@ -447,7 +481,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用，示例不绑定发行版",
-      "note": "grep 找行 / sed 改行 / awk 取列的分工，7 分钟讲清总览"
+      "note": "grep 找行 / sed 改行 / awk 取列的分工，7 分钟讲清总览",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-grep-basic": {
       "platform": "bilibili",
@@ -459,7 +494,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "GNU grep 3.x，RHEL 9/10 一致",
-      "note": "短视频，适合先建立 -i/-n/-v/-c 的直觉"
+      "note": "短视频，适合先建立 -i/-n/-v/-c 的直觉",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-grep-detail": {
       "platform": "bilibili",
@@ -471,7 +507,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "14:44，与主视频叠加会超单节 20 分钟，作按需补充"
+      "note": "14:44，与主视频叠加会超单节 20 分钟，作按需补充",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-regex": {
       "platform": "bilibili",
@@ -483,7 +520,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "讲 BRE/ERE 通用规则，与发行版无关",
-      "note": "自带章节：04:26 字符匹配、06:01 字符集、09:00 逻辑或、13:51 数量控制"
+      "note": "自带章节：04:26 字符匹配、06:01 字符集、09:00 逻辑或、13:51 数量控制",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-find-basic": {
       "platform": "bilibili",
@@ -495,7 +533,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "GNU findutils 4.8+",
-      "note": "-name 与 -type 的基础演示"
+      "note": "-name 与 -type 的基础演示",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-find-cond": {
       "platform": "bilibili",
@@ -507,7 +546,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "对应本站原课程 idev365「定位文件」一节",
-      "note": "本站题源同一套课程；需验收是否讲到 -mtime 与 -size 段落"
+      "note": "本站题源同一套课程；需验收是否讲到 -mtime 与 -size 段落",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-find-deep": {
       "platform": "bilibili",
@@ -519,7 +559,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "GNU findutils",
-      "note": "29:33 超单节上限，作备用；时间与大小谓词最全的一条"
+      "note": "29:33 超单节上限，作备用；时间与大小谓词最全的一条",
+      "link_checked_at": "2026-10-26"
     },
     "a-03-find-time": {
       "kind": "article",
@@ -532,7 +573,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用，示例含 -mtime +7 与 -size +1M",
-      "note": "图文补充 -mtime 的 +n/-n 与 -size 单位表；取整细节见 must_know"
+      "note": "图文补充 -mtime 的 +n/-n 与 -size 单位表；取整细节见 must_know",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-sed": {
       "platform": "bilibili",
@@ -544,7 +586,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "GNU sed 4.x",
-      "note": "正好覆盖本节两题：-n '2,5p' 与 s///g"
+      "note": "正好覆盖本节两题：-n '2,5p' 与 s///g",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-sed-daily": {
       "platform": "bilibili",
@@ -556,7 +599,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "GNU sed",
-      "note": "更全但更长，与主视频叠加超 20 分钟，作按需"
+      "note": "更全但更长，与主视频叠加超 20 分钟，作按需",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-awk": {
       "platform": "bilibili",
@@ -568,7 +612,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "gawk 5.x，RHEL 9/10 一致",
-      "note": "-F 指定分隔符、$1/$3 取列、NR/NF"
+      "note": "-F 指定分隔符、$1/$3 取列、NR/NF",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-awk-intro": {
       "platform": "bilibili",
@@ -580,7 +625,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "gawk",
-      "note": "按需补充，重点看 NR/NF 与 print 逗号输出"
+      "note": "按需补充，重点看 NR/NF 与 print 逗号输出",
+      "link_checked_at": "2026-10-26"
     },
     "a-03-join": {
       "kind": "article",
@@ -593,7 +639,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "GNU coreutils join",
-      "note": "中文图文；B 站没有合适的 join 短视频，本节以图文为主资料"
+      "note": "中文图文；B 站没有合适的 join 短视频，本节以图文为主资料",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-sort": {
       "platform": "bilibili",
@@ -605,7 +652,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "GNU coreutils",
-      "note": "-n 数值排序与 -r 逆序"
+      "note": "-n 数值排序与 -r 逆序",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-cut": {
       "platform": "bilibili",
@@ -617,7 +665,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "GNU coreutils",
-      "note": "-d 分隔符 + -f 字段号，与 awk 的 -F 对照看"
+      "note": "-d 分隔符 + -f 字段号，与 awk 的 -F 对照看",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-uniq": {
       "platform": "bilibili",
@@ -629,7 +678,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "GNU coreutils",
-      "note": "按需看 -c；重点记住 uniq 只处理相邻重复行"
+      "note": "按需看 -c；重点记住 uniq 只处理相邻重复行",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-vim-basic": {
       "platform": "bilibili",
@@ -641,7 +691,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Vim 8/9 通用，与 vi 兼容模式一致",
-      "note": "i/o/a 进插入模式、:wq 保存退出"
+      "note": "i/o/a 进插入模式、:wq 保存退出",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-vim-cmd": {
       "platform": "bilibili",
@@ -653,7 +704,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Vim 8+",
-      "note": "普通模式移动、删除、撤销的完整演示"
+      "note": "普通模式移动、删除、撤销的完整演示",
+      "link_checked_at": "2026-10-26"
     },
     "v-03-vim-sub": {
       "platform": "bilibili",
@@ -665,7 +717,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Vim 8+",
-      "note": "只在 :%s/// 的范围与 g 标志不清楚时看"
+      "note": "只在 :%s/// 的范围与 g 标志不清楚时看",
+      "link_checked_at": "2026-10-26"
     },
 
     "v-04-quote": {
@@ -678,7 +731,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash 4+，RHEL 9/10 一致",
-      "note": "单引号 / 双引号 / 不加引号三种写法的差别，配变量赋值"
+      "note": "单引号 / 双引号 / 不加引号三种写法的差别，配变量赋值",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-brace": {
       "platform": "bilibili",
@@ -690,7 +744,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash brace expansion",
-      "note": "只有 1 分半，正好补 {1..100} 这一处；不足 3 分钟，只作补充"
+      "note": "只有 1 分半，正好补 {1..100} 这一处；不足 3 分钟，只作补充",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-args": {
       "platform": "bilibili",
@@ -702,7 +757,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash",
-      "note": "19:51 已接近单节 20 分钟上限，本节不再叠补充视频"
+      "note": "19:51 已接近单节 20 分钟上限，本节不再叠补充视频",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-ops": {
       "platform": "bilibili",
@@ -714,7 +770,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash 算术展开 $(( ))",
-      "note": "分集 p8，讲 $(( )) 与 expr 两种算术写法"
+      "note": "分集 p8，讲 $(( )) 与 expr 两种算术写法",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-backtick": {
       "platform": "bilibili",
@@ -726,7 +783,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash 命令替换",
-      "note": "反引号与 $() 的等价关系，以及和单引号的区别"
+      "note": "反引号与 $() 的等价关系，以及和单引号的区别",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-if": {
       "platform": "bilibili",
@@ -738,7 +796,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash test / [ ]",
-      "note": "if 与 [ ] 的写法，含数值比较"
+      "note": "if 与 [ ] 的写法，含数值比较",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-if2": {
       "platform": "bilibili",
@@ -750,7 +809,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash",
-      "note": "分集 p11，补 if 的多分支写法"
+      "note": "分集 p11，补 if 的多分支写法",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-exec": {
       "platform": "bilibili",
@@ -762,7 +822,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash",
-      "note": "chmod +x 后 ./script.sh、bash script.sh、source 三种方式的差别"
+      "note": "chmod +x 后 ./script.sh、bash script.sh、source 三种方式的差别",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-exitcode": {
       "platform": "bilibili",
@@ -774,7 +835,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash",
-      "note": "&& 与 || 的判据就是退出状态，2 分半讲清"
+      "note": "&& 与 || 的判据就是退出状态，2 分半讲清",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-read": {
       "platform": "bilibili",
@@ -786,7 +848,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash",
-      "note": "while read 逐行读文件的标准例子；IFS= 与 -r 靠图文补"
+      "note": "while read 逐行读文件的标准例子；IFS= 与 -r 靠图文补",
+      "link_checked_at": "2026-10-26"
     },
     "a-04-read": {
       "kind": "article",
@@ -799,7 +862,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash 4+",
-      "note": "明确列出三个条件：IFS= 紧挨 read、加 -r、用输入重定向避免子 shell"
+      "note": "明确列出三个条件：IFS= 紧挨 read、加 -r、用输入重定向避免子 shell",
+      "link_checked_at": "2026-10-26"
     },
     "a-04-debug": {
       "kind": "article",
@@ -812,7 +876,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash 4+",
-      "note": "-n 只查语法不执行、-x 打印执行跟踪（前缀 +）、-v 输出源码"
+      "note": "-n 只查语法不执行、-x 打印执行跟踪（前缀 +）、-v 输出源码",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-redirect": {
       "platform": "bilibili",
@@ -824,7 +889,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash",
-      "note": "从文件描述符讲起，最适合讲清 > 与 2>&1 的先后顺序"
+      "note": "从文件描述符讲起，最适合讲清 > 与 2>&1 的先后顺序",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-redirect2": {
       "platform": "bilibili",
@@ -836,7 +902,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash",
-      "note": "专门讲 2>&1 的位置差异，配合主视频看"
+      "note": "专门讲 2>&1 的位置差异，配合主视频看",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-pipe": {
       "platform": "bilibili",
@@ -848,7 +915,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash",
-      "note": "管道只接标准输出，标准错误仍走终端"
+      "note": "管道只接标准输出，标准错误仍走终端",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-sigpipe": {
       "platform": "bilibili",
@@ -860,7 +928,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash / Linux 通用",
-      "note": "从管道退出码 141 讲到 SIGPIPE，理解管道状态取谁的值"
+      "note": "从管道退出码 141 讲到 SIGPIPE，理解管道状态取谁的值",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-jobs": {
       "platform": "bilibili",
@@ -872,7 +941,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash 作业控制",
-      "note": "一条视频覆盖 &、jobs、fg、bg、nohup 五个考点"
+      "note": "一条视频覆盖 &、jobs、fg、bg、nohup 五个考点",
+      "link_checked_at": "2026-10-26"
     },
     "v-04-jobs2": {
       "platform": "bilibili",
@@ -884,7 +954,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Bash",
-      "note": "3 分钟速览版，适合考前过一遍"
+      "note": "3 分钟速览版，适合考前过一遍",
+      "link_checked_at": "2026-10-26"
     },
 
     "v-05-account-db": {
@@ -897,7 +968,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "RHEL 9/10 与通用发行版一致",
-      "note": "passwd / shadow / group 三个文件与字段含义"
+      "note": "passwd / shadow / group 三个文件与字段含义",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-user-mgmt": {
       "platform": "bilibili",
@@ -909,7 +981,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "整体串讲账户体系，配合查看用户信息那条"
+      "note": "整体串讲账户体系，配合查看用户信息那条",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-useradd": {
       "platform": "bilibili",
@@ -921,7 +994,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "useradd / login.defs",
-      "note": "-u -d -m -s -G 各选项与 /etc/skel 模板"
+      "note": "-u -d -m -s -G 各选项与 /etc/skel 模板",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-useradd2": {
       "platform": "bilibili",
@@ -933,7 +1007,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "实操演示，建用户后立刻设密码"
+      "note": "实操演示，建用户后立刻设密码",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-userdel": {
       "platform": "bilibili",
@@ -945,7 +1020,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "userdel",
-      "note": "userdel 与 userdel -r 的差别，以及删不干净的部分"
+      "note": "userdel 与 userdel -r 的差别，以及删不干净的部分",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-userdel2": {
       "platform": "bilibili",
@@ -957,7 +1033,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "2 分钟速览 userdel / groupdel"
+      "note": "2 分钟速览 userdel / groupdel",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-groups": {
       "platform": "bilibili",
@@ -969,7 +1046,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "主组与附加组的关系，组管理命令"
+      "note": "主组与附加组的关系，组管理命令",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-usermod": {
       "platform": "bilibili",
@@ -981,7 +1059,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "-g 与 -G 的区别，-a 追加的用法"
+      "note": "-g 与 -G 的区别，-a 追加的用法",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-passwd": {
       "platform": "bilibili",
@@ -993,7 +1072,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "passwd、-l/-u/-d/-e 各开关"
+      "note": "passwd、-l/-u/-d/-e 各开关",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-passwd2": {
       "platform": "bilibili",
@@ -1005,7 +1085,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "root 重置他人密码的场景"
+      "note": "root 重置他人密码的场景",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-chage": {
       "platform": "bilibili",
@@ -1017,7 +1098,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "shadow 老化字段",
-      "note": "-m -M -W -I -E -d 六个选项一次讲全"
+      "note": "-m -M -W -I -E -d 六个选项一次讲全",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-su-sudo": {
       "platform": "bilibili",
@@ -1029,7 +1111,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "su 与 su - 的环境差异，sudo 的授权思路"
+      "note": "su 与 su - 的环境差异，sudo 的授权思路",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-su": {
       "platform": "bilibili",
@@ -1041,7 +1124,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "su 与 su - 的对比演示"
+      "note": "su 与 su - 的对比演示",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-sudoers": {
       "platform": "bilibili",
@@ -1053,7 +1137,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "sudo 1.9+，RHEL 9/10 一致",
-      "note": "visudo 编辑、%wheel 授权行、语法检查"
+      "note": "visudo 编辑、%wheel 授权行、语法检查",
+      "link_checked_at": "2026-10-26"
     },
     "v-05-sudo-why": {
       "platform": "bilibili",
@@ -1065,7 +1150,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "常见 sudo 报错与 sudoers 的关系"
+      "note": "常见 sudo 报错与 sudoers 的关系",
+      "link_checked_at": "2026-10-26"
     },
 
     "v-06-who": {
@@ -1078,7 +1164,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "三类主体与 ls -l 权限串的分组"
+      "note": "三类主体与 ls -l 权限串的分组",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-perm-str": {
       "platform": "bilibili",
@@ -1090,7 +1177,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "用一个具体数字串讲权限位"
+      "note": "用一个具体数字串讲权限位",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-chmod": {
       "platform": "bilibili",
@@ -1102,7 +1190,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "数字法与符号法两种写法都演示"
+      "note": "数字法与符号法两种写法都演示",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-octal": {
       "platform": "bilibili",
@@ -1114,7 +1203,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "2 分钟把 4/2/1 的加法讲透"
+      "note": "2 分钟把 4/2/1 的加法讲透",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-chown": {
       "platform": "bilibili",
@@ -1126,7 +1216,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "chown 与 chgrp 的基本用法"
+      "note": "chown 与 chgrp 的基本用法",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-chown2": {
       "platform": "bilibili",
@@ -1138,7 +1229,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "属主:属组 写法与 -R 递归"
+      "note": "属主:属组 写法与 -R 递归",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-ten": {
       "platform": "bilibili",
@@ -1150,7 +1242,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "逐位拆解十个字符，含目录与文件的语义差别"
+      "note": "逐位拆解十个字符，含目录与文件的语义差别",
+      "link_checked_at": "2026-10-26"
     },
     "a-06-dir-perm": {
       "kind": "article",
@@ -1163,7 +1256,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "目录 r/w/x 三行对照表，含 umask 与 SUID/SGID/sticky 简表"
+      "note": "目录 r/w/x 三行对照表，含 umask 与 SUID/SGID/sticky 简表",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-umask": {
       "platform": "bilibili",
@@ -1175,7 +1269,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "666/777 基准与按位去掉的算法"
+      "note": "666/777 基准与按位去掉的算法",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-umask2": {
       "platform": "bilibili",
@@ -1187,7 +1282,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "2 分钟速览 umask 的作用范围"
+      "note": "2 分钟速览 umask 的作用范围",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-acl": {
       "platform": "bilibili",
@@ -1199,7 +1295,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "POSIX ACL",
-      "note": "getfacl / setfacl -m -x -b 与 mask 的完整演示"
+      "note": "getfacl / setfacl -m -x -b 与 mask 的完整演示",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-acl2": {
       "platform": "bilibili",
@@ -1211,7 +1308,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "3 分钟横向对比六个权限命令的分工"
+      "note": "3 分钟横向对比六个权限命令的分工",
+      "link_checked_at": "2026-10-26"
     },
     "a-06-default-acl": {
       "kind": "article",
@@ -1224,7 +1322,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "POSIX ACL",
-      "note": "默认 ACL 只对目录、只影响新建对象；含 -k 与 -b 的区别"
+      "note": "默认 ACL 只对目录、只影响新建对象；含 -k 与 -b 的区别",
+      "link_checked_at": "2026-10-26"
     },
     "a-06-setfacl": {
       "kind": "article",
@@ -1237,7 +1336,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "POSIX ACL",
-      "note": "选项逐个对照，-b 清全部、-k 只清默认"
+      "note": "选项逐个对照，-b 清全部、-k 只清默认",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-suid": {
       "platform": "bilibili",
@@ -1249,7 +1349,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "用 passwd 讲 euid 提权，3 分钟抓住要点"
+      "note": "用 passwd 讲 euid 提权，3 分钟抓住要点",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-special": {
       "platform": "bilibili",
@@ -1261,7 +1362,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "sticky bit 的实测演示，本节主视频"
+      "note": "sticky bit 的实测演示，本节主视频",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-special-perm": {
       "platform": "bilibili",
@@ -1273,7 +1375,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "从特殊权限整体讲到目录 SGID 的组继承"
+      "note": "从特殊权限整体讲到目录 SGID 的组继承",
+      "link_checked_at": "2026-10-26"
     },
     "v-06-sgid": {
       "platform": "bilibili",
@@ -1285,7 +1388,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "1 分半只讲 SGID 的组继承，短但精准"
+      "note": "1 分半只讲 SGID 的组继承，短但精准",
+      "link_checked_at": "2026-10-26"
     },
 
     "v-07-proc-state": {
@@ -1298,7 +1402,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用内核行为，不绑定发行版",
-      "note": "Z 僵尸、D 不可中断、孤儿进程一次讲全"
+      "note": "Z 僵尸、D 不可中断、孤儿进程一次讲全",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-ps": {
       "platform": "bilibili",
@@ -1310,7 +1415,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "procps-ng",
-      "note": "ps -ef 与自定义 -o 列"
+      "note": "ps -ef 与自定义 -o 列",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-top": {
       "platform": "bilibili",
@@ -1322,7 +1428,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "procps-ng",
-      "note": "负载、CPU、内存三块区域怎么读"
+      "note": "负载、CPU、内存三块区域怎么读",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-kill": {
       "platform": "bilibili",
@@ -1334,7 +1441,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "信号编号、TERM 与 KILL 的差别"
+      "note": "信号编号、TERM 与 KILL 的差别",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-systemctl": {
       "platform": "bilibili",
@@ -1346,7 +1454,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "systemd 239+，RHEL 9/10 一致",
-      "note": "start/stop/enable/disable/status 全套"
+      "note": "start/stop/enable/disable/status 全套",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-target": {
       "platform": "bilibili",
@@ -1358,7 +1467,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "systemd",
-      "note": "target 与旧运行级别的对应关系"
+      "note": "target 与旧运行级别的对应关系",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-unit": {
       "platform": "bilibili",
@@ -1370,7 +1480,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "systemd",
-      "note": "写 unit 文件到 daemon-reload 的最短闭环"
+      "note": "写 unit 文件到 daemon-reload 的最短闭环",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-journalctl": {
       "platform": "bilibili",
@@ -1382,7 +1493,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "systemd-journald",
-      "note": "-u 按单元、-b 按启动、-f 跟随"
+      "note": "-u 按单元、-b 按启动、-f 跟随",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-cron": {
       "platform": "bilibili",
@@ -1394,7 +1506,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "cronie",
-      "note": "五字段含义与常用写法，含 /etc/crontab 对照"
+      "note": "五字段含义与常用写法，含 /etc/crontab 对照",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-cron-basic": {
       "platform": "bilibili",
@@ -1406,7 +1519,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "cronie",
-      "note": "从写第一条任务讲起，适合先建立直觉"
+      "note": "从写第一条任务讲起，适合先建立直觉",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-cron-run": {
       "platform": "bilibili",
@@ -1418,7 +1532,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "cronie",
-      "note": "实操配置，含日志查看"
+      "note": "实操配置，含日志查看",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-timer": {
       "platform": "bilibili",
@@ -1430,7 +1545,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "systemd timer",
-      "note": ".timer + .service 配对、OnCalendar 写法"
+      "note": ".timer + .service 配对、OnCalendar 写法",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-chrony": {
       "platform": "bilibili",
@@ -1442,7 +1558,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "chrony 4.x，RHEL 9/10 默认",
-      "note": "chronyd 与 chronyc 的分工"
+      "note": "chronyd 与 chronyc 的分工",
+      "link_checked_at": "2026-10-26"
     },
     "v-07-chrony2": {
       "platform": "bilibili",
@@ -1454,7 +1571,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "chrony",
-      "note": "服务端配置视角，补 chronyc sources 的输出"
+      "note": "服务端配置视角，补 chronyc sources 的输出",
+      "link_checked_at": "2026-10-26"
     },
     "v-08-dnf-install": {
       "platform": "bilibili",
@@ -1466,7 +1584,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "dnf（RHEL 8/9 通用）",
-      "note": "标题为 yum 与 dnf 命令串讲，具体覆盖到哪些子命令待观看确认"
+      "note": "标题为 yum 与 dnf 命令串讲，具体覆盖到哪些子命令待观看确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-08-yum-dnf": {
       "platform": "bilibili",
@@ -1478,7 +1597,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "yum 与 dnf 的关系",
-      "note": "两者关系与 Module 差异，命令语法基本一致"
+      "note": "两者关系与 Module 差异，命令语法基本一致",
+      "link_checked_at": "2026-10-26"
     },
     "v-08-rpm-install": {
       "platform": "bilibili",
@@ -1490,7 +1610,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "rpm 通用",
-      "note": "rpm -ivh 装本地包的完整过程"
+      "note": "rpm -ivh 装本地包的完整过程",
+      "link_checked_at": "2026-10-26"
     },
     "v-08-pkg-mgr": {
       "platform": "bilibili",
@@ -1502,7 +1623,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "RPM 系包管理器",
-      "note": "RPM 底层 + dnf 上层的关系，两分半讲清"
+      "note": "RPM 底层 + dnf 上层的关系，两分半讲清",
+      "link_checked_at": "2026-10-26"
     },
     "v-08-rpm-query": {
       "platform": "bilibili",
@@ -1514,7 +1636,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "rpm 通用",
-      "note": "标题含查询、升级、卸载三块，是否逐条演示待观看确认"
+      "note": "标题含查询、升级、卸载三块，是否逐条演示待观看确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-08-httpd": {
       "platform": "bilibili",
@@ -1526,7 +1649,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "RHEL/CentOS 系 httpd",
-      "note": "标题为 httpd 服务器搭建；是否含防火墙放行与客户端验证待确认"
+      "note": "标题为 httpd 服务器搭建；是否含防火墙放行与客户端验证待确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-08-repo": {
       "platform": "bilibili",
@@ -1538,7 +1662,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "dnf + .repo",
-      "note": "标题为红帽配置 dnf 仓库；是否讲到 repodata 层级待确认"
+      "note": "标题为红帽配置 dnf 仓库；是否讲到 repodata 层级待确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-08-repo-local": {
       "platform": "bilibili",
@@ -1550,7 +1675,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "yum + .repo",
-      "note": "file:/// 本地源写法，注意三斜杠"
+      "note": "file:/// 本地源写法，注意三斜杠",
+      "link_checked_at": "2026-10-26"
     },
     "v-08-flatpak-use": {
       "platform": "bilibili",
@@ -1562,7 +1688,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Flatpak 1.x",
-      "note": "标题为 FlatHub 在 Ubuntu 24.04 上的使用；命令覆盖待观看确认"
+      "note": "标题为 FlatHub 在 Ubuntu 24.04 上的使用；命令覆盖待观看确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-08-flatpak-install": {
       "platform": "bilibili",
@@ -1574,7 +1701,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Flatpak 1.x",
-      "note": "搜索 → 安装的最短路径"
+      "note": "搜索 → 安装的最短路径",
+      "link_checked_at": "2026-10-26"
     },
     "v-08-flatpak-why": {
       "platform": "bilibili",
@@ -1586,7 +1714,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Flatpak 概念",
-      "note": "应用与 runtime 分层、沙箱思路"
+      "note": "应用与 runtime 分层、沙箱思路",
+      "link_checked_at": "2026-10-26"
     },
     "a-08-dnf-cmd": {
       "kind": "article",
@@ -1599,7 +1728,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "dnf（RHEL 8/9）",
-      "note": "机器读正文（待人工复核）：写明「dnf update 被重定向到 dnf upgrade」，并列出 clean / remove / provides / upgrade"
+      "note": "机器读正文（待人工复核）：写明「dnf update 被重定向到 dnf upgrade」，并列出 clean / remove / provides / upgrade",
+      "link_checked_at": "2026-10-26"
     },
     "a-08-dnf-usage": {
       "kind": "article",
@@ -1612,7 +1742,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "dnf（Rocky 9 实测）",
-      "note": "机器读正文（待人工复核）：有 .repo 段落字段（baseurl / enabled / gpgcheck / gpgkey）与 --enablerepo/--disablerepo 说明，附 repolist 实测输出"
+      "note": "机器读正文（待人工复核）：有 .repo 段落字段（baseurl / enabled / gpgcheck / gpgkey）与 --enablerepo/--disablerepo 说明，附 repolist 实测输出",
+      "link_checked_at": "2026-10-26"
     },
     "a-08-rpm-query": {
       "kind": "article",
@@ -1625,7 +1756,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "rpm 通用（例子偏老，命令语义不变）",
-      "note": "机器读正文（待人工复核）：-qpl / -qf / -ql / -Va 都有实例；例子偏 Fedora Core 4，命令语义不变"
+      "note": "机器读正文（待人工复核）：-qpl / -qf / -ql / -Va 都有实例；例子偏 Fedora Core 4，命令语义不变",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-lsblk": {
       "platform": "bilibili",
@@ -1637,7 +1769,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "util-linux（RHEL 7/9 通用）",
-      "note": "据标题推测覆盖树状层级与 -f，待验收"
+      "note": "据标题推测覆盖树状层级与 -f，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-lsblk-blkid": {
       "platform": "bilibili",
@@ -1649,7 +1782,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "util-linux",
-      "note": "据标题推测为两命令分工，待验收"
+      "note": "据标题推测为两命令分工，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-fdisk": {
       "platform": "bilibili",
@@ -1661,7 +1795,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "fdisk（util-linux 2.23+ 支持 GPT）",
-      "note": "据标题推测覆盖 n/d/p/w/q，待验收"
+      "note": "据标题推测覆盖 n/d/p/w/q，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-disk-full": {
       "platform": "bilibili",
@@ -1673,7 +1808,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "据标题推测为分区→格式化→挂载，待验收"
+      "note": "据标题推测为分区→格式化→挂载，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-unit": {
       "platform": "bilibili",
@@ -1685,7 +1821,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "中英字幕；据标题推测讲 10^9 与 2^30，待验收"
+      "note": "中英字幕；据标题推测讲 10^9 与 2^30，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-esp": {
       "platform": "bilibili",
@@ -1697,7 +1834,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "UEFI/GPT",
-      "note": "偏 Windows 视角；Linux 侧 ESP 布局是否讲到待验收"
+      "note": "偏 Windows 视角；Linux 侧 ESP 布局是否讲到待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-mount": {
       "platform": "bilibili",
@@ -1709,7 +1847,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "util-linux",
-      "note": "据标题推测覆盖 mount/umount 基本用法，待验收"
+      "note": "据标题推测覆盖 mount/umount 基本用法，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-mount-fstab": {
       "platform": "bilibili",
@@ -1721,7 +1860,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "util-linux",
-      "note": "据标题推测为 mount/fstab/loop 速览，待验收"
+      "note": "据标题推测为 mount/fstab/loop 速览，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-fstab": {
       "platform": "bilibili",
@@ -1733,7 +1873,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "据标题推测覆盖 UUID 挂载与 fstab 持久化，待验收"
+      "note": "据标题推测覆盖 UUID 挂载与 fstab 持久化，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-automount": {
       "platform": "bilibili",
@@ -1745,7 +1886,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "据标题推测为最短写法演示，待验收"
+      "note": "据标题推测为最短写法演示，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-swap": {
       "platform": "bilibili",
@@ -1757,7 +1899,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "据标题推测覆盖 swap 分区实战流程，待验收"
+      "note": "据标题推测覆盖 swap 分区实战流程，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-09-swap-basic": {
       "platform": "bilibili",
@@ -1769,7 +1912,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "通用",
-      "note": "据标题推测为 swap 基础概念，待验收"
+      "note": "据标题推测为 swap 基础概念，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "a-09-partprobe": {
       "kind": "article",
@@ -1782,7 +1926,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "util-linux partprobe",
-      "note": "机器读正文（待人工复核）：partprobe 只刷新内核缓存、不改磁盘；设备忙时怎么办；验证看 /proc/partitions"
+      "note": "机器读正文（待人工复核）：partprobe 只刷新内核缓存、不改磁盘；设备忙时怎么办；验证看 /proc/partitions",
+      "link_checked_at": "2026-10-26"
     },
     "a-09-resize": {
       "kind": "article",
@@ -1795,7 +1940,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "LVM + ext4/XFS（RHEL 7/9）",
-      "note": "机器读正文（待人工复核）：XFS 不支持缩容；ext4 必须 卸载→e2fsck -f→resize2fs→lvreduce；xfs_growfs 传挂载点"
+      "note": "机器读正文（待人工复核）：XFS 不支持缩容；ext4 必须 卸载→e2fsck -f→resize2fs→lvreduce；xfs_growfs 传挂载点",
+      "link_checked_at": "2026-10-26"
     },
     "a-09-rhel7-fs": {
       "kind": "article",
@@ -1808,7 +1954,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "RHEL 7（对照 RHEL 6）",
-      "note": "机器读正文（待人工复核）：一句话给出「RHEL7 默认 XFS、RHEL6 默认 ext4」；其余是装机步骤，文件系统清单靠 must_know"
+      "note": "机器读正文（待人工复核）：一句话给出「RHEL7 默认 XFS、RHEL6 默认 ext4」；其余是装机步骤，文件系统清单靠 must_know",
+      "link_checked_at": "2026-10-26"
     },
     "v-10-lvm-basic": {
       "platform": "bilibili",
@@ -1820,7 +1967,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "lvm2（RHEL 7/9 通用）",
-      "note": "据标题推测边讲三层边动手，待验收"
+      "note": "据标题推测边讲三层边动手，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-10-lvm-what": {
       "platform": "bilibili",
@@ -1832,7 +1980,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "概念",
-      "note": "不到两分钟的概念铺垫，待验收"
+      "note": "不到两分钟的概念铺垫，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-10-lvm-create": {
       "platform": "bilibili",
@@ -1844,7 +1993,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "lvm2",
-      "note": "标题只提「制作与扩容」，具体覆盖到 pv/vg/lv 哪几步待验收；17:25 超 15 分钟参考值，见台账例外说明"
+      "note": "标题只提「制作与扩容」，具体覆盖到 pv/vg/lv 哪几步待验收；17:25 超 15 分钟参考值，见台账例外说明",
+      "link_checked_at": "2026-10-26"
     },
     "v-10-lvm-extend": {
       "platform": "bilibili",
@@ -1856,7 +2006,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "lvm2",
-      "note": "据标题推测为 lvextend 实操，待验收"
+      "note": "据标题推测为 lvextend 实操，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-10-lvm-snapshot": {
       "platform": "bilibili",
@@ -1868,7 +2019,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "lvm2 snapshot",
-      "note": "据标题推测讲快照的创建与回滚，待验收"
+      "note": "据标题推测讲快照的创建与回滚，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-10-thin": {
       "platform": "bilibili",
@@ -1880,7 +2032,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "thin provisioning 概念",
-      "note": "PVE 语境讲厚/薄置备，概念可迁移；待验收"
+      "note": "PVE 语境讲厚/薄置备，概念可迁移；待验收",
+      "link_checked_at": "2026-10-26"
     },
     "a-10-pvmove": {
       "kind": "article",
@@ -1893,7 +2046,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "lvm2 pvmove/vgreduce/pvremove",
-      "note": "机器读正文（待人工复核）：pvmove → 确认 Alloc PE 归零 → vgreduce → pvremove 的完整顺序与空间检查"
+      "note": "机器读正文（待人工复核）：pvmove → 确认 Alloc PE 归零 → vgreduce → pvremove 的完整顺序与空间检查",
+      "link_checked_at": "2026-10-26"
     },
     "a-10-stratis": {
       "kind": "article",
@@ -1906,7 +2060,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Stratis（RHEL 8 起，RHEL 9 沿用）",
-      "note": "机器读正文（待人工复核）：pool create/add-data、filesystem create、/stratis/池/fs 挂载、blkid 取 UUID、snapshot 都有实例"
+      "note": "机器读正文（待人工复核）：pool create/add-data、filesystem create、/stratis/池/fs 挂载、blkid 取 UUID、snapshot 都有实例",
+      "link_checked_at": "2026-10-26"
     },
     "a-10-rh-stratis": {
       "kind": "article",
@@ -1931,7 +2086,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "IPv4 基础",
-      "note": "据标题推测讲 IP 组成与掩码，待验收"
+      "note": "据标题推测讲 IP 组成与掩码，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-subnet": {
       "platform": "bilibili",
@@ -1943,7 +2099,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "IPv4 子网计算",
-      "note": "据标题推测为网络/广播地址算法，待验收"
+      "note": "据标题推测为网络/广播地址算法，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-nmcli": {
       "platform": "bilibili",
@@ -1955,7 +2112,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "NetworkManager / nmcli",
-      "note": "据标题推测为 nmcli 配置实操，待验收；16:49 超 15 分钟参考值，见台账例外说明"
+      "note": "据标题推测为 nmcli 配置实操，待验收；16:49 超 15 分钟参考值，见台账例外说明",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-ip-cmd": {
       "platform": "bilibili",
@@ -1967,7 +2125,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "iproute2",
-      "note": "据标题推测覆盖 ip addr 查看与临时修改，待验收"
+      "note": "据标题推测覆盖 ip addr 查看与临时修改，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-ip-ifconfig": {
       "platform": "bilibili",
@@ -1979,7 +2138,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "iproute2 + net-tools",
-      "note": "据标题推测为两者对照，待验收"
+      "note": "据标题推测为两者对照，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-route-table": {
       "platform": "bilibili",
@@ -1991,7 +2151,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "路由表基础",
-      "note": "据标题推测讲路由表字段，待验收"
+      "note": "据标题推测讲路由表字段，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-route-elements": {
       "platform": "bilibili",
@@ -2003,7 +2164,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "路由表基础",
-      "note": "据标题推测含默认路由要素，待验收"
+      "note": "据标题推测含默认路由要素，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-longest-prefix": {
       "platform": "bilibili",
@@ -2015,7 +2177,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "选路原则",
-      "note": "据标题推测讲最长前缀，待验收"
+      "note": "据标题推测讲最长前缀，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-longest-2": {
       "platform": "bilibili",
@@ -2027,7 +2190,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "选路原则",
-      "note": "两分钟速览，待验收"
+      "note": "两分钟速览，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-dns-record": {
       "platform": "bilibili",
@@ -2039,7 +2203,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "DNS 记录类型",
-      "note": "据标题推测覆盖 A/AAAA/CNAME/MX，待验收"
+      "note": "据标题推测覆盖 A/AAAA/CNAME/MX，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-net-tools": {
       "platform": "bilibili",
@@ -2051,7 +2216,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "iputils / traceroute",
-      "note": "据标题推测覆盖三个连通性工具，待验收"
+      "note": "据标题推测覆盖三个连通性工具，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-traceroute": {
       "platform": "bilibili",
@@ -2063,7 +2229,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "traceroute",
-      "note": "据标题推测为 traceroute 专题，待验收"
+      "note": "据标题推测为 traceroute 专题，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-nmap": {
       "platform": "bilibili",
@@ -2075,7 +2242,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "nmap",
-      "note": "按需：渗透视角，只用来补 -sn 主机发现；待验收"
+      "note": "按需：渗透视角，只用来补 -sn 主机发现；待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-ss": {
       "platform": "bilibili",
@@ -2087,7 +2255,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "iproute2 ss",
-      "note": "据标题推测覆盖 ss -lntp，待验收"
+      "note": "据标题推测覆盖 ss -lntp，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-ssh-key": {
       "platform": "bilibili",
@@ -2099,7 +2268,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "OpenSSH",
-      "note": "据标题推测讲公钥/私钥与 authorized_keys，待验收"
+      "note": "据标题推测讲公钥/私钥与 authorized_keys，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-ssh-key2": {
       "platform": "bilibili",
@@ -2111,7 +2281,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "OpenSSH",
-      "note": "据标题推测为实操演示，待验收；主视频 14:23 已占满小节预算，这条按备用挂出，需要看手把手操作时再打开"
+      "note": "据标题推测为实操演示，待验收；主视频 14:23 已占满小节预算，这条按备用挂出，需要看手把手操作时再打开",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-xrdp": {
       "platform": "bilibili",
@@ -2123,7 +2294,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "xrdp / RDP",
-      "note": "据标题推测为 xrdp 配置与 RDP 连接，待验收"
+      "note": "据标题推测为 xrdp 配置与 RDP 连接，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "a-11-nsswitch": {
       "kind": "article",
@@ -2136,7 +2308,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "glibc NSS",
-      "note": "机器读正文（待人工复核）：hosts: files dns 的顺序、libnss_* 模块、getent 与 dig 为何可能不一致"
+      "note": "机器读正文（待人工复核）：hosts: files dns 的顺序、libnss_* 模块、getent 与 dig 为何可能不一致",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-ifcfg": {
       "platform": "bilibili",
@@ -2148,7 +2321,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "ifcfg 与 NetworkManager 兼容",
-      "note": "据标题推测为改 ifcfg 文件配网络的实验课，待验收；是否讲到「RHEL 9 里 ifcfg 由 NM 接管」需人工确认"
+      "note": "据标题推测为改 ifcfg 文件配网络的实验课，待验收；是否讲到「RHEL 9 里 ifcfg 由 NM 接管」需人工确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-static-route": {
       "platform": "bilibili",
@@ -2160,7 +2334,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "CentOS 7 风格（route / 配置文件）",
-      "note": "据标题推测为 CentOS 7 时代的 route 命令 / 配置文件做法（route-eth0 是常见形态），待验收；RHEL 9 应改用 nmcli 的 ipv4.routes"
+      "note": "据标题推测为 CentOS 7 时代的 route 命令 / 配置文件做法（route-eth0 是常见形态），待验收；RHEL 9 应改用 nmcli 的 ipv4.routes",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-ssh-port": {
       "platform": "bilibili",
@@ -2172,7 +2347,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "sshd_config / SELinux 端口标签",
-      "note": "据标题推测为改 sshd_config 的 Port 并放行防火墙，待验收；15:04 超 15 分钟参考值，见台账例外说明"
+      "note": "据标题推测为改 sshd_config 的 Port 并放行防火墙，待验收；15:04 超 15 分钟参考值，见台账例外说明",
+      "link_checked_at": "2026-10-26"
     },
     "v-11-ssh-trouble": {
       "platform": "bilibili",
@@ -2184,7 +2360,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "云主机视角的 SSH 排查",
-      "note": "简介自述从 IP 检查、网络诊断到系统排查的路径，待验收；视角偏云主机（安全组、被墙），本机环境对应的是防火墙与 sshd 状态"
+      "note": "简介自述从 IP 检查、网络诊断到系统排查的路径，待验收；视角偏云主机（安全组、被墙），本机环境对应的是防火墙与 sshd 状态",
+      "link_checked_at": "2026-10-26"
     },
     "v-12-firewalld-basic": {
       "platform": "bilibili",
@@ -2196,7 +2373,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "firewalld（CentOS/RHEL 通用）",
-      "note": "据标题推测为 firewalld 概览（zone、service、port），待验收；是否讲到 runtime 与 permanent 两套视图需人工确认"
+      "note": "据标题推测为 firewalld 概览（zone、service、port），待验收；是否讲到 runtime 与 permanent 两套视图需人工确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-12-fw-port": {
       "platform": "bilibili",
@@ -2208,7 +2386,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "firewalld --add-port",
-      "note": "据标题推测为 --add-port 实操，待验收；是否同时演示 --permanent + --reload 需人工确认"
+      "note": "据标题推测为 --add-port 实操，待验收；是否同时演示 --permanent + --reload 需人工确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-12-selinux-intro": {
       "platform": "bilibili",
@@ -2220,7 +2399,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "SELinux 概念",
-      "note": "据标题推测为 SELinux 概念科普，待验收；2:22 偏短，模式与 setenforce 的细节预计讲不到"
+      "note": "据标题推测为 SELinux 概念科普，待验收；2:22 偏短，模式与 setenforce 的细节预计讲不到",
+      "link_checked_at": "2026-10-26"
     },
     "v-12-selinux-debug": {
       "platform": "bilibili",
@@ -2232,7 +2412,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "RHCSA 实验环境（RHEL 8）",
-      "note": "据标题推测为 RHCSA 风格的 SELinux 调试演示，待验收；简介含培训招生内容，不影响观看"
+      "note": "据标题推测为 RHCSA 风格的 SELinux 调试演示，待验收；简介含培训招生内容，不影响观看",
+      "link_checked_at": "2026-10-26"
     },
     "v-12-selinux-avc": {
       "platform": "bilibili",
@@ -2244,7 +2425,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "RHCE 课程章节",
-      "note": "据标题推测为 AVC 日志调查与解决流程，待验收；是否覆盖 ausearch/sealert 需人工确认"
+      "note": "据标题推测为 AVC 日志调查与解决流程，待验收；是否覆盖 ausearch/sealert 需人工确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-12-selinux-www": {
       "platform": "bilibili",
@@ -2256,7 +2438,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "LNMP 场景",
-      "note": "标题直指「非标准目录放网页受 SELinux 域与上下文限制」，待验收；是否演示 semanage fcontext + restorecon 需人工确认"
+      "note": "标题直指「非标准目录放网页受 SELinux 域与上下文限制」，待验收；是否演示 semanage fcontext + restorecon 需人工确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-12-httpd": {
       "platform": "bilibili",
@@ -2268,7 +2451,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Apache httpd",
-      "note": "据标题推测为 httpd 安装与配置实操，待验收；14:14 接近 15 分钟参考值，是否基于 RHEL 需人工确认"
+      "note": "据标题推测为 httpd 安装与配置实操，待验收；14:14 接近 15 分钟参考值，是否基于 RHEL 需人工确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-12-403": {
       "platform": "bilibili",
@@ -2280,7 +2464,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Nginx 视角",
-      "note": "据标题推测为 403/502/504 的定位思路，待验收；讲的是 Nginx，与 httpd 的对应关系需自行迁移"
+      "note": "据标题推测为 403/502/504 的定位思路，待验收；讲的是 Nginx，与 httpd 的对应关系需自行迁移",
+      "link_checked_at": "2026-10-26"
     },
     "v-12-openssl": {
       "platform": "bilibili",
@@ -2292,7 +2477,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "OpenSSL 概念",
-      "note": "据标题推测为 OpenSSL 定位与用途介绍，待验收；视角偏 C 语言开发，运维侧的证书命令靠 must_know"
+      "note": "据标题推测为 OpenSSL 定位与用途介绍，待验收；视角偏 C 语言开发，运维侧的证书命令靠 must_know",
+      "link_checked_at": "2026-10-26"
     },
     "a-12-fw-guide": {
       "kind": "article",
@@ -2305,7 +2491,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "firewalld / firewall-cmd",
-      "note": "机器读正文（待人工复核）：runtime 与 permanent 两套配置、--runtime-to-permanent、--reload、zone 与接口绑定、--query-port、富规则与策略"
+      "note": "机器读正文（待人工复核）：runtime 与 permanent 两套配置、--runtime-to-permanent、--reload、zone 与接口绑定、--query-port、富规则与策略",
+      "link_checked_at": "2026-10-26"
     },
     "a-12-fcontext": {
       "kind": "article",
@@ -2318,7 +2505,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "SELinux 文件上下文",
-      "note": "机器读正文（待人工复核）：ls -Z / ls -Zd、chcon 临时、semanage fcontext + restorecon 持久、restorecon -n 干跑、ausearch -m avc、/.autorelabel"
+      "note": "机器读正文（待人工复核）：ls -Z / ls -Zd、chcon 临时、semanage fcontext + restorecon 持久、restorecon -n 干跑、ausearch -m avc、/.autorelabel",
+      "link_checked_at": "2026-10-26"
     },
     "a-12-port": {
       "kind": "article",
@@ -2331,7 +2519,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "SELinux 端口标签",
-      "note": "机器读正文（待人工复核）：semanage port -l/-C、-a 新增、-m 修改、-d 删除、http_port_t 默认端口、与 firewalld 的分工"
+      "note": "机器读正文（待人工复核）：semanage port -l/-C、-a 新增、-m 修改、-d 删除、http_port_t 默认端口、与 firewalld 的分工",
+      "link_checked_at": "2026-10-26"
     },
     "a-12-bool": {
       "kind": "article",
@@ -2344,7 +2533,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "SELinux 布尔值",
-      "note": "机器读正文（待人工复核）：getsebool -a、getsebool 单个、setsebool 临时、setsebool -P 写策略库、sesearch -b 查规则"
+      "note": "机器读正文（待人工复核）：getsebool -a、getsebool 单个、setsebool 临时、setsebool -P 写策略库、sesearch -b 查规则",
+      "link_checked_at": "2026-10-26"
     },
     "v-13-nfs-basic": {
       "platform": "bilibili",
@@ -2356,7 +2546,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "NFS + exports",
-      "note": "据标题推测为 exports 与挂载的完整演示，待验收；4:00 短，RPC 与 v3/v4 端口差异预计讲不到"
+      "note": "据标题推测为 exports 与挂载的完整演示，待验收；4:00 短，RPC 与 v3/v4 端口差异预计讲不到",
+      "link_checked_at": "2026-10-26"
     },
     "v-13-nfs-setup": {
       "platform": "bilibili",
@@ -2368,7 +2559,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "nfs-utils / exportfs",
-      "note": "据标题推测为服务端安装到客户端挂载的全流程，待验收；简介含「请勿转载」声明，不影响观看"
+      "note": "据标题推测为服务端安装到客户端挂载的全流程，待验收；简介含「请勿转载」声明，不影响观看",
+      "link_checked_at": "2026-10-26"
     },
     "v-13-nfs-rhel": {
       "platform": "bilibili",
@@ -2380,7 +2572,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "RHEL",
-      "note": "标题同时含 NFS 与 NIS，NFS 部分占多少待验收，暂按补充挂出"
+      "note": "标题同时含 NFS 与 NIS，NFS 部分占多少待验收，暂按补充挂出",
+      "link_checked_at": "2026-10-26"
     },
     "v-13-root-squash": {
       "platform": "bilibili",
@@ -2392,7 +2585,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "CentOS 7 / NFSv3",
-      "note": "简介自述会用 exportfs -a 检查 exports、并把客户端 root 映射到 nfsnobody，待验收；新版匿名用户是 nobody"
+      "note": "简介自述会用 exportfs -a 检查 exports、并把客户端 root 映射到 nfsnobody，待验收；新版匿名用户是 nobody",
+      "link_checked_at": "2026-10-26"
     },
     "v-13-autofs": {
       "platform": "bilibili",
@@ -2404,7 +2598,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "RHCSA 实验环境（RHEL 8）",
-      "note": "据标题推测为 RHCSA 考纲内的 autofs 实操（主映射 + 间接映射），待验收；直接映射的 /- 写法是否讲到需确认"
+      "note": "据标题推测为 RHCSA 考纲内的 autofs 实操（主映射 + 间接映射），待验收；直接映射的 /- 写法是否讲到需确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-13-dns": {
       "platform": "bilibili",
@@ -2416,7 +2611,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Rocky Linux 9（与 RHEL 9 兼容）",
-      "note": "标题写明 rocky9，与 RHEL 9 同源、配置可参照，待验收；16:50 超 15 分钟参考值，见台账例外说明"
+      "note": "标题写明 rocky9，与 RHEL 9 同源、配置可参照，待验收；16:50 超 15 分钟参考值，见台账例外说明",
+      "link_checked_at": "2026-10-26"
     },
     "v-13-dns-linux": {
       "platform": "bilibili",
@@ -2428,7 +2624,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "BIND / named",
-      "note": "据标题推测为 named.conf 与区域文件演示，待验收；简介提到 DHCP 环境，可能包含前置网络配置"
+      "note": "据标题推测为 named.conf 与区域文件演示，待验收；简介提到 DHCP 环境，可能包含前置网络配置",
+      "link_checked_at": "2026-10-26"
     },
     "v-13-samba": {
       "platform": "bilibili",
@@ -2440,7 +2637,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Samba / smb.conf",
-      "note": "简介自述面向刚学 Linux 的同学，待验收；是否讲到 smbd 与 nmbd 两个守护进程需人工确认"
+      "note": "简介自述面向刚学 Linux 的同学，待验收；是否讲到 smbd 与 nmbd 两个守护进程需人工确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-13-ftp": {
       "platform": "bilibili",
@@ -2452,7 +2650,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "网络工程师视角",
-      "note": "标题直指主动/被动模式与 FTP/TFTP 辨析，待验收；ASCII 与 binary 两种传输类型是否讲到需确认"
+      "note": "标题直指主动/被动模式与 FTP/TFTP 辨析，待验收；ASCII 与 binary 两种传输类型是否讲到需确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-13-mail": {
       "platform": "bilibili",
@@ -2464,7 +2663,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "邮件协议概念",
-      "note": "据标题推测为 SMTP/POP3/IMAP 的分工，待验收；作者在简介里自述「会有讲错的地方」，只作补充，以 must_know 为准"
+      "note": "据标题推测为 SMTP/POP3/IMAP 的分工，待验收；作者在简介里自述「会有讲错的地方」，只作补充，以 must_know 为准",
+      "link_checked_at": "2026-10-26"
     },
     "v-13-bs": {
       "platform": "bilibili",
@@ -2476,7 +2676,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "架构概念",
-      "note": "简介已写明 B/S 是浏览器/服务器、C/S 是胖客户端，待验收；PHP+MySQL 那半不在本节范围"
+      "note": "简介已写明 B/S 是浏览器/服务器、C/S 是胖客户端，待验收；PHP+MySQL 那半不在本节范围",
+      "link_checked_at": "2026-10-26"
     },
     "a-13-ports": {
       "kind": "article",
@@ -2489,7 +2690,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "端口与协议对照",
-      "note": "机器读正文（待人工复核）：21 FTP、22 SSH、23 Telnet、25 SMTP、53 DNS、80 HTTP、110 POP3、143 IMAP、443 HTTPS、3306 MySQL 等对照"
+      "note": "机器读正文（待人工复核）：21 FTP、22 SSH、23 Telnet、25 SMTP、53 DNS、80 HTTP、110 POP3、143 IMAP、443 HTTPS、3306 MySQL 等对照",
+      "link_checked_at": "2026-10-26"
     },
     "a-13-storage": {
       "kind": "article",
@@ -2502,7 +2704,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "块存储 / 文件存储",
-      "note": "机器读正文（待人工复核）：块存储与文件存储的区别、iSCSI 的 initiator/target 与 3260 端口、NFS 基于 RPC、选型对比"
+      "note": "机器读正文（待人工复核）：块存储与文件存储的区别、iSCSI 的 initiator/target 与 3260 端口、NFS 基于 RPC、选型对比",
+      "link_checked_at": "2026-10-26"
     },
     "a-13-squid": {
       "kind": "article",
@@ -2515,7 +2718,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Squid 2.x/3.x 配置",
-      "note": "机器读正文（待人工复核）：http_port 3128、cache_mem 64 MB、maximum_object_size、cache_dir 各参数含义"
+      "note": "机器读正文（待人工复核）：http_port 3128、cache_mem 64 MB、maximum_object_size、cache_dir 各参数含义",
+      "link_checked_at": "2026-10-26"
     },
     "v-14-podman-intro": {
       "platform": "bilibili",
@@ -2527,7 +2731,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Podman 架构",
-      "note": "简介自述为 Podman 入门 + 实战，含与 Docker 的架构对比，待验收；rootless 与 rootful 两套存储是否讲到需确认"
+      "note": "简介自述为 Podman 入门 + 实战，含与 Docker 的架构对比，待验收；rootless 与 rootful 两套存储是否讲到需确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-14-cmp": {
       "platform": "bilibili",
@@ -2539,7 +2744,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "容器工具选型",
-      "note": "据标题推测偏选型对比，可能不涉及具体命令，待验收"
+      "note": "据标题推测偏选型对比，可能不涉及具体命令，待验收",
+      "link_checked_at": "2026-10-26"
     },
     "v-14-podman-8min": {
       "platform": "bilibili",
@@ -2551,7 +2757,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Podman 入门",
-      "note": "据标题推测为镜像/容器基本操作的入门演示，待验收；作者已注销，链接若失效需替换"
+      "note": "据标题推测为镜像/容器基本操作的入门演示，待验收；作者已注销，链接若失效需替换",
+      "link_checked_at": "2026-10-26"
     },
     "v-14-podman-cmd": {
       "platform": "bilibili",
@@ -2563,7 +2770,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Podman CLI",
-      "note": "简介写明覆盖 ps / images / logs / exec 等常用指令，待验收；16:00 超 15 分钟参考值，见台账例外说明"
+      "note": "简介写明覆盖 ps / images / logs / exec 等常用指令，待验收；16:00 超 15 分钟参考值，见台账例外说明",
+      "link_checked_at": "2026-10-26"
     },
     "v-14-quadlet": {
       "platform": "bilibili",
@@ -2575,7 +2783,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "Quadlet（Podman 4.4+）",
-      "note": "简介自述讲 .container 声明式配置与自动生成 systemd 单元，待验收；linger 那步是否讲到需确认"
+      "note": "简介自述讲 .container 声明式配置与自动生成 systemd 单元，待验收；linger 那步是否讲到需确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-14-docker-port": {
       "platform": "bilibili",
@@ -2587,7 +2796,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "docker run -p",
-      "note": "简介写明讲端口映射是什么、怎么实现、怎么改，待验收；EXPOSE 与 -p 的区别是否讲到需确认"
+      "note": "简介写明讲端口映射是什么、怎么实现、怎么改，待验收；EXPOSE 与 -p 的区别是否讲到需确认",
+      "link_checked_at": "2026-10-26"
     },
     "v-14-cloud": {
       "platform": "bilibili",
@@ -2599,7 +2809,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "云服务交付模型",
-      "note": "据标题推测为三种交付模型的通俗区分，待验收；2:11 只够讲边界，OpenStack 的定位靠 must_know"
+      "note": "据标题推测为三种交付模型的通俗区分，待验收；2:11 只够讲边界，OpenStack 的定位靠 must_know",
+      "link_checked_at": "2026-10-26"
     },
     "v-14-openstack": {
       "platform": "bilibili",
@@ -2611,7 +2822,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "OpenStack 组件",
-      "note": "据标题推测为组件名与职责的快速过一遍，待验收；3:56 只够列名单，细节靠 must_know"
+      "note": "据标题推测为组件名与职责的快速过一遍，待验收；3:56 只够列名单，细节靠 must_know",
+      "link_checked_at": "2026-10-26"
     },
     "v-14-redis": {
       "platform": "bilibili",
@@ -2623,7 +2835,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "关系型 vs 内存数据库",
-      "note": "简介自述对比 MySQL 与 Redis 的底层设计差异（硬盘/内存），待验收；2:50 偏短，数据结构类型靠 must_know"
+      "note": "简介自述对比 MySQL 与 Redis 的底层设计差异（硬盘/内存），待验收；2:50 偏短，数据结构类型靠 must_know",
+      "link_checked_at": "2026-10-26"
     },
     "a-14-volume": {
       "kind": "article",
@@ -2636,7 +2849,8 @@ window.LINUX_LEARNING = {
       "status": "candidate",
       "verified_at": null,
       "version_note": "podman-run(1) 卷选项",
-      "note": "机器读正文（待人工复核）：官方 man 页译文，讲 -v 的选项列表、默认不改标签、:z 共享与 :Z 私有、以及不要重标系统目录"
+      "note": "机器读正文（待人工复核）：官方 man 页译文，讲 -v 的选项列表、默认不改标签、:z 共享与 :Z 私有、以及不要重标系统目录",
+      "link_checked_at": "2026-10-26"
     }
   },
 

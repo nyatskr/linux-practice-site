@@ -1,0 +1,32 @@
+{
+  "schema": "catalog/1",
+  "updated_at": "2026-10-01",
+  "items": [
+    {
+      "id": "demo-video-01",
+      "kind": "video",
+      "platform": "bilibili",
+      "title": "Linux 发行版家族树详解",
+      "author": "必要时我会逐帧学习",
+      "url": "https://www.bilibili.com/video/BV1Apep6xE5B/",
+      "duration": "08:51",
+      "role": "main",
+      "status": "candidate",
+      "verified_at": null,
+      "link_checked_at": null
+    },
+    {
+      "id": "demo-article-01",
+      "kind": "article",
+      "platform": "web",
+      "title": "Linux find 命令",
+      "author": "菜鸟教程",
+      "url": "https://www.runoob.com/linux/linux-comm-find.html",
+      "duration": null,
+      "role": "main",
+      "status": "verified",
+      "verified_at": "2026-10-01",
+      "link_checked_at": null
+    }
+  ]
+}

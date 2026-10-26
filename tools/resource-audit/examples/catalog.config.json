@@ -1,0 +1,29 @@
+{
+  "site": "catalog 适配器冒烟测试",
+  "source": {
+    "adapter": "catalog_json",
+    "path": "catalog.sample.json",
+    "items_key": "items",
+    "fields": {
+      "id": "id",
+      "url": "url",
+      "title": "title",
+      "author": "author",
+      "kind": "kind",
+      "platform": "platform",
+      "duration": "duration",
+      "role": "role",
+      "status": "status",
+      "verified_at": "verified_at",
+      "link_checked_at": "link_checked_at"
+    }
+  },
+  "check": {
+    "concurrency": 2,
+    "delay_seconds": 0.3
+  },
+  "report": {
+    "json": "",
+    "markdown": ""
+  }
+}

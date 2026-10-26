@@ -6,6 +6,7 @@
 - 题库：`assets/js/bank.js`（版本见 `bank_version`）
 - 数据：`assets/js/resources.js`
 - 校验：`python tools/check-learning-map.py`
+- 巡检：`python tools/check-resources.py`（链接存活与元数据核对，记录见 [resource-audit.md](resource-audit.md)）
 
 ## 状态约定
 

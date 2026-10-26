@@ -14,6 +14,9 @@ __pycache__/
 *.tmp
 .tmp-qa/
 
+# 巡检机器报告（人工台账在 docs/resource-audit.md）
+reports/
+
 # 工具/会话本地数据（不进仓库）
 .workbuddy-ai/
 

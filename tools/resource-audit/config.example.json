@@ -1,0 +1,35 @@
+{
+  "_notes": [
+    "模板配置：复制 resource-audit/ 到新站点后，只改 source 段即可。",
+    "adapter=resources_js 读 window.XXX = {...}; 形式的 JS 数据文件。",
+    "adapter=catalog_json 读普通 JSON 目录，字段名可用 fields 映射。",
+    "path 一律相对项目根目录；根目录默认是本脚本上两级，可用 --root 覆盖。"
+  ],
+  "site": "your-site",
+  "source": {
+    "adapter": "resources_js",
+    "path": "assets/js/resources.js",
+    "global": "LINUX_LEARNING",
+    "items_key": "videos",
+    "lessons_key": "lessons"
+  },
+  "check": {
+    "timeout_seconds": 15,
+    "retries": 1,
+    "concurrency": 3,
+    "delay_seconds": 0.5,
+    "duration_tolerance_seconds": 3,
+    "title_similarity_min": 0.85,
+    "skip_status": [],
+    "dead_markers": [
+      { "host": "example.com", "text": "内容已被删除" }
+    ]
+  },
+  "report": {
+    "json": "reports/resources.json",
+    "markdown": ""
+  },
+  "stamp": {
+    "field": "link_checked_at"
+  }
+}
