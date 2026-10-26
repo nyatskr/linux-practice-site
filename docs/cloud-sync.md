@@ -242,11 +242,50 @@ window.LP_CLOUD_CONFIG = Object.freeze({
 `index.html` 已经引入所需脚本，无需再改：
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/vendor/supabase-js-2.118.0.js"></script>
 <script src="assets/js/cloud-config.js"></script>
 <script src="assets/js/cloud.js"></script>
 <script src="assets/js/app.js"></script>
 ```
+
+## 五之二、SDK 自托管（vendor）
+
+Supabase SDK **不走 CDN**，文件在仓库里：
+
+| 项 | 值 |
+| --- | --- |
+| 版本 | `@supabase/supabase-js@2.118.0`（UMD 构建 `dist/umd/supabase.js`） |
+| 来源 | npm registry：`https://registry.npmjs.org/@supabase/supabase-js/-/supabase-js-2.118.0.tgz` |
+| 下载日期 | 2026-10-27 |
+| 文件 | `assets/vendor/supabase-js-2.118.0.js`（218 KB，未压缩） |
+| 许可证 | MIT，见 `assets/vendor/supabase-js-LICENSE.txt` |
+| SHA-256 | `ee3be8de192b97cb1d73d1e95d6b82bb1f6b658c0f97c4ef757fc331996ed3d3` |
+
+**为什么自托管**：SDK 是可选功能，但它是阻塞脚本。挂在 CDN 上时，CDN 慢或被墙，
+整个应用（不只是云同步）都会卡在启动阶段。自托管后只要站点能打开，SDK 就能加载，
+也少一次第三方 DNS/TLS 往返。ICT 站也放了同一份文件，两个仓库各自独立，互不引用。
+
+**为什么钉死版本**：`@2` 是浮动标签，会在不改仓库的情况下自动升到新的 2.x。
+钉死后升级是可审计的动作。
+
+升级步骤：
+
+```powershell
+# 1. 改版本号，下载同一份 tarball
+curl.exe -L -o sb.tgz https://registry.npmjs.org/@supabase/supabase-js/-/supabase-js-<新版本>.tgz
+tar -xzf sb.tgz
+# 2. 替换 vendor 文件与许可证
+copy package\dist\umd\supabase.js assets\vendor\supabase-js-<新版本>.js
+copy package\LICENSE assets\vendor\supabase-js-LICENSE.txt
+# 3. 记下新的 SHA-256，更新 index.html 与本文件
+Get-FileHash assets\vendor\supabase-js-<新版本>.js -Algorithm SHA256
+# 4. 跑回归
+node tools/test-boot-without-cdn.mjs
+```
+
+`tools/test-boot-without-cdn.mjs` 会屏蔽 `cdn.jsdelivr.net` 后启动站点，
+校验题库、路由、SDK、云状态与控制台错误，并断言页面没有向 CDN 发请求。
+**如果有人把 SDK 改回 CDN 引入，这条测试会直接失败。**
 
 登录流程用 PKCE（`flowType: 'pkce'`）。站点用 `#/practice` 这类 URL 片段做路由，传统隐式登录也会把令牌放进 `#` 后面，容易和路由冲突；PKCE 把授权码放在查询参数里，更适合现在的结构。
 

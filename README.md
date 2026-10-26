@@ -68,6 +68,10 @@ Supabase 数据库（每个账号一份记录）
 浏览器 localStorage（离线缓存）
 ```
 
+Supabase SDK 自托管在 `assets/vendor/supabase-js-2.118.0.js`（钉死版本，MIT），**不走 CDN**——
+它是阻塞脚本，挂 CDN 时一旦加载慢或被墙，整个应用都起不来。
+`node tools/test-boot-without-cdn.mjs` 会屏蔽 CDN 后验证站点照常启动。
+
 - 未登录：记录只在本机；第一次登录时会询问是否把本机已有记录合并到账号。
 - 已登录：每次答题先写本机，延迟约 1 秒自动上传；断网照常答题，恢复网络后补同步。
 - 换设备：登录同一 GitHub 账号后自动下载并合并。
@@ -102,6 +106,7 @@ linux-practice-site/
 ├── tools/bili-search.py    B 站按关键词检索候选视频（辅助补资料，非必需）
 ├── tools/check-resources.py     资源巡检入口（薄壳，实现见下一行）
 ├── tools/resource-audit/   链接与元数据巡检组件（可整目录复制到别的站点）
+├── tools/test-boot-without-cdn.mjs  断 CDN 启动回归（需要 Node + Chrome）
 └── README.md
 ```
 
