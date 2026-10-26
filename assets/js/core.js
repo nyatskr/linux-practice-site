@@ -45,9 +45,16 @@
 
   /* ---------------- 本地存储（含降级） ---------------- */
 
+  /* 进度按「作用域」分键：未登录用 .guest，登录后按 Supabase 用户 ID 分开。
+     同一台电脑换账号时，A 的记录不会被合并进 B。 */
   const KEY_PROGRESS = 'lp.progress.v1';
   const KEY_SESSION = 'lp.session.v1';
   const KEY_PREFS = 'lp.prefs.v1';
+
+  let progressScope = 'guest';
+
+  const progressKey = (scope) =>
+    scope && scope !== 'guest' ? KEY_PROGRESS + '.user.' + scope : KEY_PROGRESS + '.guest';
 
   const memStore = {};
   let storageOK = true;
@@ -362,9 +369,64 @@
       attempts: 0,
       wrongCount: 0,
       favorite: false,
+      favoriteUpdatedAt: 0,
       needsReview: false,
+      reviewUpdatedAt: 0,
     };
   }
+
+  /* 把外部来源（导入文件 / 云端行）的记录补成完整形状，避免缺字段导致合并判错 */
+  LP.normalizeRecord = (src) => {
+    const rec = emptyRecord(src && src.qid ? String(src.qid) : '');
+    if (!src) return rec;
+    rec.bankVersion = src.bankVersion || rec.bankVersion;
+    rec.selected = Array.isArray(src.selected) ? src.selected.slice() : [];
+    rec.correct = !!src.correct;
+    rec.answeredAt = Math.max(0, Number(src.answeredAt) || 0);
+    rec.attempts = Math.max(0, Number(src.attempts) || 0);
+    if (!rec.attempts && rec.answeredAt) rec.attempts = 1;
+    rec.wrongCount = Math.max(0, Number(src.wrongCount) || 0);
+    rec.favorite = !!src.favorite;
+    rec.favoriteUpdatedAt = Math.max(0, Number(src.favoriteUpdatedAt) || 0);
+    rec.needsReview = !!src.needsReview;
+    rec.reviewUpdatedAt = Math.max(0, Number(src.reviewUpdatedAt) || 0);
+    return rec;
+  };
+
+  /* 合并规则（导入与云同步共用）：
+     作答取时间较新的一次；次数类取较大值；收藏 / 待复习取「最后修改时间」较新的一边。
+     旧数据没有修改时间时退化为「只要有一边为真就保留」，与升级前的行为一致。 */
+  LP.mergeInto = (cur, src) => {
+    const rec = LP.normalizeRecord(src);
+    if (rec.answeredAt > (cur.answeredAt || 0)) {
+      cur.selected = rec.selected.slice();
+      cur.correct = rec.correct;
+      cur.answeredAt = rec.answeredAt;
+      if (rec.bankVersion) cur.bankVersion = rec.bankVersion;
+    }
+    cur.attempts = Math.max(cur.attempts || 0, rec.attempts);
+    cur.wrongCount = Math.max(cur.wrongCount || 0, rec.wrongCount);
+
+    const fu = rec.favoriteUpdatedAt;
+    const cu = cur.favoriteUpdatedAt || 0;
+    if (fu > cu) {
+      cur.favorite = rec.favorite;
+      cur.favoriteUpdatedAt = fu;
+    } else if (!fu && !cu && rec.favorite) {
+      cur.favorite = true;
+    }
+
+    const ru = rec.reviewUpdatedAt;
+    const cr = cur.reviewUpdatedAt || 0;
+    if (ru > cr) {
+      cur.needsReview = rec.needsReview;
+      cur.reviewUpdatedAt = ru;
+    } else if (!ru && !cr && rec.needsReview) {
+      cur.needsReview = true;
+    }
+
+    return cur;
+  };
 
   LP.getRecord = (qid) => state.progress.records[qid] || null;
 
@@ -375,8 +437,10 @@
 
   LP.saveProgress = () => {
     state.progress.bankVersion = state.bank ? state.bank.bank_version : '';
-    const ok = storageSet(KEY_PROGRESS, JSON.stringify(state.progress));
+    const ok = storageSet(progressKey(progressScope), JSON.stringify(state.progress));
     if (!ok) LP.warnStorage();
+    /* 云同步是可选模块：没加载 cloud.js 时这个钩子什么也不做 */
+    if (LP.cloud && typeof LP.cloud.queueSync === 'function') LP.cloud.queueSync();
     return ok;
   };
 
@@ -395,6 +459,7 @@
   LP.toggleFavorite = (qid) => {
     const rec = LP.ensureRecord(qid);
     rec.favorite = !rec.favorite;
+    rec.favoriteUpdatedAt = Date.now();
     LP.saveProgress();
     return rec.favorite;
   };
@@ -402,14 +467,18 @@
   LP.toggleReview = (qid) => {
     const rec = LP.ensureRecord(qid);
     rec.needsReview = !rec.needsReview;
+    rec.reviewUpdatedAt = Date.now();
     LP.saveProgress();
     return rec.needsReview;
   };
+
+  const FLAG_STAMP = { favorite: 'favoriteUpdatedAt', needsReview: 'reviewUpdatedAt' };
 
   LP.clearRecordFlag = (qid, flag) => {
     const rec = state.progress.records[qid];
     if (!rec) return;
     rec[flag] = false;
+    if (FLAG_STAMP[flag]) rec[FLAG_STAMP[flag]] = Date.now();
     LP.saveProgress();
   };
 
@@ -534,20 +603,106 @@
 
   /* ---------------- 初始化 / 序列化 ---------------- */
 
+  /* 读取某个作用域的进度，不改变当前状态；读不到返回 null */
+  function readProgressFor(scope) {
+    const key = progressKey(scope);
+    let raw = storageGet(key);
+    if (raw == null && scope === 'guest') {
+      /* 兼容升级前的单一存储键：旧记录原样当作本机（未登录）记录，旧键保留不删 */
+      raw = storageGet(KEY_PROGRESS);
+      if (raw != null) storageSet(key, raw);
+    }
+    if (raw == null) return null;
+    try {
+      const parsed = JSON.parse(raw);
+      if (!parsed || !parsed.records || typeof parsed.records !== 'object') return null;
+      return { schema: 1, bankVersion: parsed.bankVersion || '', records: parsed.records };
+    } catch (e) {
+      console.warn('进度读取失败', e);
+      return null;
+    }
+  }
+
+  LP.readProgressFor = readProgressFor;
+  LP.getProgressScope = () => progressScope;
+  LP.progressKeyFor = progressKey;
+
+  /* 列出本机缓存过的所有作用域（guest + 每个登录过的账号）及记录数。
+     排查「同一台电脑登过两个账号」时用：每个账号的记录是分开存的，
+     这里能直接看出哪一份有记录、各有多少条。 */
+  LP.localScopeSummary = () => {
+    const out = [];
+    const count = (p) => {
+      let active = 0;
+      let total = 0;
+      Object.keys(p.records).forEach((qid) => {
+        const r = p.records[qid] || {};
+        total++;
+        if ((r.attempts || 0) > 0 || r.favorite || r.needsReview) active++;
+      });
+      return { active, total };
+    };
+    const add = (scope) => {
+      const p = readProgressFor(scope);
+      if (!p) return;
+      const n = count(p);
+      if (!n.total) return;
+      out.push({
+        scope,
+        key: progressKey(scope),
+        active: n.active,
+        total: n.total,
+        current: scope === progressScope,
+      });
+    };
+
+    add('guest');
+    const prefix = KEY_PROGRESS + '.user.';
+    try {
+      const keys = [];
+      for (let i = 0; i < window.localStorage.length; i++) {
+        const k = window.localStorage.key(i);
+        if (k && k.indexOf(prefix) === 0) keys.push(k);
+      }
+      keys.sort().forEach((k) => add(k.slice(prefix.length)));
+    } catch (e) {
+      /* 隐私模式下枚举可能失败，只返回 guest */
+    }
+    return out;
+  };
+
+  /* 切换作用域（登录 / 退出时调用）。返回是否真的切换了。 */
+  LP.setProgressScope = (scope) => {
+    const next = scope && scope !== 'guest' ? String(scope) : 'guest';
+    if (next === progressScope) return false;
+    progressScope = next;
+    state.progress = readProgressFor(next) || {
+      schema: 1,
+      bankVersion: state.bank ? state.bank.bank_version : '',
+      records: {},
+    };
+    return true;
+  };
+
+  /* 只清当前作用域的本机记录；云端由 cloud.js 负责 */
+  LP.resetProgress = () => {
+    state.progress = {
+      schema: 1,
+      bankVersion: state.bank ? state.bank.bank_version : '',
+      records: {},
+    };
+    LP.saveProgress();
+  };
+
   LP.init = (bank) => {
     buildIndex(bank);
 
-    try {
-      const raw = storageGet(KEY_PROGRESS);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (parsed && parsed.records && typeof parsed.records === 'object') {
-          state.progress = { schema: 1, bankVersion: parsed.bankVersion || '', records: parsed.records };
-        }
-      }
-    } catch (e) {
-      console.warn('进度读取失败', e);
-    }
+    progressScope = 'guest';
+    state.progress = readProgressFor('guest') || {
+      schema: 1,
+      bankVersion: bank.bank_version,
+      records: {},
+    };
 
     try {
       const raw = storageGet(KEY_SESSION);
@@ -583,10 +738,12 @@
   /* 导出结构 */
   LP.exportPayload = () => ({
     kind: 'linux-practice-progress',
-    schemaVersion: 1,
+    schemaVersion: 2,
     bankVersion: state.bank.bank_version,
     exportedAt: new Date().toISOString(),
-    records: LP.recordList().filter((r) => r.attempts > 0 || r.favorite || r.needsReview),
+    records: LP.recordList().filter(
+      (r) => r.attempts > 0 || r.favorite || r.needsReview || r.favoriteUpdatedAt > 0 || r.reviewUpdatedAt > 0
+    ),
   });
 
   LP.progressSummary = () => {

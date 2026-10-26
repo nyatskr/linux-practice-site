@@ -237,7 +237,7 @@
       : '';
 
     return (
-      '<div class="lesson" id="lesson-' + esc(l.id) + '">' +
+      '<div class="lesson" id="lesson-' + esc(l.id) + '" tabindex="-1">' +
         '<div class="lesson-head">' +
           '<span class="lesson-no">' + esc(l.id) + '</span>' +
           '<h3>' + esc(l.title) + '</h3>' +
@@ -652,6 +652,25 @@
 
   /* ---------------- 结果页 ---------------- */
 
+  function lessonResultNavigation(session) {
+    if (!session || session.mode !== 'lesson' || !session.qids.length) return null;
+
+    const current = LP.lessonOf(session.qids[0]);
+    if (!current) return null;
+
+    const lessons = LP.lessonsForTopic(current.topic_id);
+    const index = lessons.findIndex((lesson) => lesson.id === current.id);
+    const next = index >= 0 && index < lessons.length - 1 ? lessons[index + 1] : null;
+    const topicUrl = '#/topic/' + encodeURIComponent(current.topic_id);
+
+    return {
+      current,
+      next,
+      topicUrl,
+      nextUrl: next ? topicUrl + '?lesson=' + encodeURIComponent(next.id) : '',
+    };
+  }
+
   V.result = () => {
     const s = LP.state.session;
     if (!s || !s.results) return '<div class="empty">没有可查看的结果。<a href="#/">回到首页</a></div>';
@@ -661,6 +680,17 @@
     const wrong = qids.filter((id) => s.results[id] && !s.results[id].correct);
     const rate = qids.length ? right / qids.length : 0;
     const used = (s.finishedAt || Date.now()) - s.startedAt;
+    const lessonNav = lessonResultNavigation(s);
+
+    const continueHtml = lessonNav
+      ? lessonNav.next
+        ? '<a class="btn primary" href="' + esc(lessonNav.nextUrl) + '">下一小节：' + esc(lessonNav.next.id) + '</a>'
+        : '<a class="btn primary" href="' + esc(lessonNav.topicUrl) + '">返回 ' + esc(lessonNav.current.topic_id) + ' 专题</a>'
+      : '';
+
+    const topicBackHtml = lessonNav && lessonNav.next
+      ? '<a class="btn ghost" href="' + esc(lessonNav.topicUrl) + '">返回 ' + esc(lessonNav.current.topic_id) + ' 专题</a>'
+      : '';
 
     const wrongHtml = wrong.length
       ? wrong
@@ -690,7 +720,9 @@
           '<h1>练习完成</h1>' +
           '<p>' + esc(s.title) + ' · 共 ' + qids.length + ' 题 · 正确 ' + right + ' · 错误 ' + wrong.length + ' · 用时 ' + LP.fmtDuration(used) + '</p>' +
           '<div class="action-row">' +
-            (wrong.length ? '<button class="btn primary" data-act="redo-wrong">只练这 ' + wrong.length + ' 道错题</button>' : '') +
+            continueHtml +
+            (wrong.length ? '<button class="btn ' + (lessonNav ? 'ghost' : 'primary') + '" data-act="redo-wrong">只练这 ' + wrong.length + ' 道错题</button>' : '') +
+            topicBackHtml +
             '<a class="btn ghost" href="#/wrong/weak">错题本</a>' +
             '<a class="btn ghost" href="#/">返回首页</a>' +
           '</div>' +
@@ -878,6 +910,114 @@
     );
   };
 
+  /* ---------------- 云同步卡片 ---------------- */
+
+  function cloudTime(ts) {
+    if (!ts) return '';
+    const d = new Date(ts);
+    const p = (n) => String(n).padStart(2, '0');
+    return p(d.getHours()) + ':' + p(d.getMinutes());
+  }
+
+  function cloudUserName(user) {
+    if (!user) return '';
+    const m = user.user_metadata || {};
+    return m.user_name || m.preferred_username || m.name || '';
+  }
+
+  function cloudUserEmail(user) {
+    return user && user.email ? String(user.email) : '';
+  }
+
+  /* Supabase 用户 ID 前 8 位：邮箱缺失时也能区分两个账号 */
+  function cloudUserShortId(user) {
+    const id = user && user.id ? String(user.id) : '';
+    return id ? id.slice(0, 8) : '';
+  }
+
+  /* 一行账号标识：@用户名 · 邮箱 · ID xxxxxxxx */
+  function cloudUserLine(user) {
+    if (!user) return '';
+    const name = cloudUserName(user);
+    const email = cloudUserEmail(user);
+    const short = cloudUserShortId(user);
+    const parts = [];
+    if (name) parts.push('@' + name);
+    if (email) parts.push(email);
+    else parts.push('未取到邮箱');
+    if (short) parts.push('ID ' + short);
+    return parts.join(' · ');
+  }
+
+  function cloudCard() {
+    const c = LP.cloud;
+    if (!c) return '';
+    const st = c.status();
+    const user = st.user;
+    const active = LP.recordList().filter((r) => r.attempts > 0 || r.favorite || r.needsReview).length;
+
+    let dot = '';
+    let head = '';
+    let note = '';
+    let acts = '';
+
+    if (st.state === 'off') {
+      head = '云同步未启用';
+      note = '进度只保存在本机。配置 Supabase 后，可用 GitHub 账号登录并跨设备同步。';
+      acts = '<button class="btn ghost sm" data-act="cloud-help">查看配置步骤</button>';
+    } else if (!user) {
+      head = '未登录';
+      note = '当前记录仅保存在本机' + (active ? '（' + active + ' 条）' : '') + '。登录后可在其他设备上接着练。';
+      acts = '<button class="btn primary sm" data-act="cloud-login">使用 GitHub 登录并同步</button>';
+    } else {
+      head = '已登录：' + cloudUserLine(user);
+      if (st.state === 'syncing') {
+        dot = 'warn';
+        note = '正在同步…';
+      } else if (st.state === 'offline') {
+        dot = 'warn';
+        note = '离线，恢复网络后自动同步；本机记录已保存。';
+      } else if (st.state === 'error') {
+        dot = 'err';
+        note = '同步失败：' + st.message + '。本机记录已保存。';
+      } else if (st.state === 'synced') {
+        dot = 'on';
+        note = '云同步：已同步 ' + cloudTime(st.lastSyncAt) + ' · 本机 ' + active + ' 条记录';
+      } else {
+        dot = 'on';
+        note = '云同步：已连接 · 本机 ' + active + ' 条记录';
+      }
+      acts =
+        '<button class="btn sm" data-act="cloud-sync">立即同步</button>' +
+        '<button class="btn ghost sm" data-act="cloud-diag">账号核对</button>' +
+        '<button class="btn ghost sm" data-act="cloud-logout">退出登录</button>';
+    }
+
+    const emailHint =
+      user && !cloudUserEmail(user)
+        ? '<p class="muted small">这个账号没有返回邮箱，可能是当初登录时没授权邮箱权限。' +
+          '退出后重新登录一次即可补上；在那之前请以「ID」区分两个账号。</p>'
+        : '';
+
+    const mig = c.migrationInfo();
+    const migBlock = mig
+      ? '<div class="warnline cloud-mig">检测到本机已有 ' + mig.count + ' 条学习记录，是否合并到当前 GitHub 账号？' +
+        '<span class="cloud-acts"><button class="btn xs primary" data-act="cloud-migrate">合并到云端</button>' +
+        '<button class="btn xs ghost" data-act="cloud-skip-migrate">不合并</button></span></div>'
+      : '';
+
+    return (
+      '<div class="section-head"><h2>云同步</h2><span class="muted">登录后本机与云端自动合并，断网仍可答题</span></div>' +
+      '<div class="card cloud-card">' +
+        '<div class="cloud-row"><i class="cloud-dot ' + dot + '"></i><b>' + esc(head) + '</b></div>' +
+        '<p class="muted small">' + esc(note) + '</p>' +
+        emailHint +
+        '<div class="cloud-acts">' + acts + '</div>' +
+      '</div>' +
+      migBlock
+    );
+  }
+
   /* ---------------- 数据管理 ---------------- */
 
   V.data = () => {
@@ -912,8 +1052,10 @@
         '</div>'
       : '';
 
+    const signedIn = !!(LP.cloud && LP.cloud.isSignedIn());
+
     return (
-      '<div class="page-head"><h1>进度与数据</h1><p class="muted">进度保存在当前浏览器本地。换设备或换域名不会自动同步，请用导出/导入迁移。</p></div>' +
+      '<div class="page-head"><h1>进度与数据</h1><p class="muted">进度默认保存在当前浏览器本地。登录后可跨设备同步，也可以用导出/导入手动迁移。</p></div>' +
       '<div class="stat-row">' +
         '<div class="stat"><span>已做</span><b>' + s.done + '</b></div>' +
         '<div class="stat"><span>正确率</span><b>' + LP.pct(s.rate) + '</b></div>' +
@@ -926,6 +1068,7 @@
         ? '<div class="okline">本地存储可用，刷新后进度会自动恢复。</div>'
         : '<div class="warnline">当前浏览器禁止写入本地存储（可能是无痕模式或隐私设置）。进度只在本次会话有效，请及时导出。</div>') +
       (staleCount ? '<div class="warnline">有 ' + staleCount + ' 条记录来自旧题库版本（' + esc(b.bank_version) + ' 之前）。题号稳定，记录已保留，建议重新练一遍这些题。</div>' : '') +
+      cloudCard() +
       '<div class="section-head"><h2>备份与迁移</h2></div>' +
       '<div class="data-grid">' +
         '<div class="card">' +
@@ -939,10 +1082,22 @@
           '<label class="btn ghost file-btn">选择文件<input type="file" id="import-file" accept="application/json,.json"></label>' +
         '</div>' +
         '<div class="card danger">' +
-          '<h3>清空本机进度</h3>' +
-          '<p class="muted">删除当前浏览器中的全部作答记录、收藏与待复习标记，不可撤销。</p>' +
-          '<button class="btn danger" data-act="clear-all">清空全部记录</button>' +
+          '<h3>' + (signedIn ? '清空本机缓存' : '清空本机进度') + '</h3>' +
+          '<p class="muted">' +
+            (signedIn
+              ? '只删除当前浏览器里的副本，云端记录保留；清空后会立即从云端重新下载。'
+              : '删除当前浏览器中的全部作答记录、收藏与待复习标记，不可撤销。') +
+          '</p>' +
+          '<button class="btn danger" data-act="clear-local">' + (signedIn ? '清空本机缓存' : '清空全部记录') + '</button>' +
         '</div>' +
+        (signedIn
+          ? '<div class="card danger">' +
+              '<h3>清空云端与本机</h3>' +
+              '<p class="muted">删除该账号在云端的全部记录，并清空本机。其他设备下次同步时也会被清空，不可撤销。</p>' +
+              '<p class="muted small">当前账号：' + esc(cloudUserLine(LP.cloud.user())) + '</p>' +
+              '<button class="btn danger" data-act="clear-cloud">清空云端记录</button>' +
+            '</div>'
+          : '') +
       '</div>' +
       learningBlock +
       '<div class="section-head"><h2>题库信息</h2></div>' +
