@@ -485,6 +485,75 @@
     notify();
   }
 
+  /* ---------------- 按题号清除记录（维护用） ----------------
+   *
+   * 只处理明确列出来的题号，不动其它记录。
+   * 两步走：先 probeQids 看当前账号有没有这些题，再 purgeQids 才真正删。
+   * 本机与云端都会删；云端只删 user_id = 当前账号的行（RLS 之外再加一道）。 */
+
+  function normalizeQids(qids) {
+    if (!Array.isArray(qids) || !qids.length) throw new Error('需要传入题号数组');
+    return qids.map((q) => String(q).trim()).filter(Boolean);
+  }
+
+  /* 这些题在当前账号里各是什么状态：本机有没有、云端有没有 */
+  async function probeQids(qids) {
+    const list = normalizeQids(qids);
+    const local = list.filter((q) => !!LP.state.progress.records[q]);
+    let cloud = null;
+    if (client && status.user) {
+      const { data, error } = await client
+        .from(TABLE)
+        .select('qid')
+        .eq('user_id', status.user.id)
+        .in('qid', list);
+      if (error) throw error;
+      cloud = (data || []).map((r) => r.qid);
+    }
+    return {
+      account: status.user ? { id: status.user.id, email: status.user.email || '' } : null,
+      asked: list,
+      local,
+      cloud,
+    };
+  }
+
+  async function purgeQids(qids) {
+    const list = normalizeQids(qids);
+
+    let local = 0;
+    list.forEach((q) => {
+      if (LP.state.progress.records[q]) {
+        delete LP.state.progress.records[q];
+        local++;
+      }
+    });
+    if (local) {
+      suppress = true;
+      try {
+        LP.saveProgress();
+      } finally {
+        suppress = false;
+      }
+    }
+
+    let cloud = 0;
+    if (client && status.user) {
+      const { error, count } = await client
+        .from(TABLE)
+        .delete({ count: 'exact' })
+        .eq('user_id', status.user.id)
+        .in('qid', list);
+      if (error) throw error;
+      cloud = count || 0;
+    }
+
+    try {
+      window.dispatchEvent(new CustomEvent('lp:data-changed'));
+    } catch (e) { /* 忽略 */ }
+    return { asked: list, removedLocal: local, removedCloud: cloud };
+  }
+
   /* ---------------- 对外接口 ---------------- */
 
   LP.cloud = {
@@ -497,6 +566,8 @@
     queueSync,
     clearCloud,
     countCloud,
+    probeQids,
+    purgeQids,
     migrate,
     skipMigration,
     migrationInfo,
